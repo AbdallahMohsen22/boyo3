@@ -16,12 +16,12 @@ import 'package:boyo3_v1/features/home_features/screens/categories/services/cubi
 import 'package:boyo3_v1/features/home_features/screens/categories/shop/shop_cubit/shop_cubit.dart';
 import 'package:boyo3_v1/features/home_features/screens/categories/vehicles/cubit/vehicle_cubit.dart';
 import 'package:boyo3_v1/features/home_features/screens/home/news/cubit/news_cubit.dart';
-import 'package:boyo3_v1/features/profile/profile_cuibt.dart';
-import 'package:boyo3_v1/features/profile/profile_repo.dart';
+
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/network/dio_factory.dart';
+import 'features/profile/cuibt/profile_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -37,8 +37,8 @@ void initGetIt() {
   getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo(getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
 
-  getIt.registerLazySingleton<ProfileRepository>(() => ProfileRepository(getIt()));
-  getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(getIt()));
+  // getIt.registerLazySingleton<ProfileRepository>(() => ProfileRepository(getIt()));
+  // getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(getIt()));
 
   // ads packages
   getIt.registerFactory<AdsPackagesRepo>(() => AdsPackagesRepo(getIt()));

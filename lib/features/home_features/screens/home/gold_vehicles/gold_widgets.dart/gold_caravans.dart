@@ -102,4 +102,5 @@ class _GetGoldCaravansState extends State<GetGoldCaravans> {
   void getGoldCaravan(BuildContext context) {
     context.read<VehicleCubit>().emitGetGoldCaravan();
   }
+
 }

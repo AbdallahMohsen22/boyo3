@@ -62,8 +62,8 @@ class VehicleDetails extends StatelessWidget {
                         const Duration(milliseconds: 800),
                         autoPlayCurve: Curves.easeIn,
                         slideIndicator: const CircularSlideIndicator(
-                          currentIndicatorColor: ColorsManager.mainRed,
-                          padding: EdgeInsets.all(5),
+                          // currentIndicatorColor: ColorsManager.mainRed,
+                          // padding: EdgeInsets.all(5),
                         ),
                       ),
                       items: [

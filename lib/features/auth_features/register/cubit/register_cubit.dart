@@ -19,7 +19,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   double? longitude;
   double? latitude;
   File? imageCover;
-  File defImage=File("/data/user/0/com.elsaleh.boyo3_v1/cache/f50f318f-7919-472f-8447-e9de58077aaa/1000096080.jpg");
+  File defImage=File("/data/user/0/com.moharam.boyo3_v1/cache/f50f318f-7919-472f-8447-e9de58077aaa/1000096080.jpg");
   TextEditingController otpController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();

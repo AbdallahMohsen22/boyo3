@@ -3,6 +3,7 @@ import 'package:boyo3_v1/core/routing/routes.dart';
 import 'package:boyo3_v1/core/theming/colors.dart';
 import 'package:boyo3_v1/core/widgets/boyo3_logo.dart';
 import 'package:boyo3_v1/features/home_features/cubit/home_cubit/home_cubit.dart';
+import 'package:boyo3_v1/features/home_features/screens/categories/services/widgets/camping_widget.dart';
 import 'package:boyo3_v1/features/home_features/screens/categories/services/widgets/maintenance_widget.dart';
 import 'package:boyo3_v1/features/home_features/screens/categories/services/widgets/rent_widget.dart';
 import 'package:boyo3_v1/features/home_features/screens/categories/services/widgets/transfer.dart';
@@ -133,7 +134,8 @@ class _ServiceScreenState extends State<ServiceScreen>
         ),
         body: TabBarView(
           children: [
-            MaintenanceWidget(),
+            // MaintenanceWidget(),
+            CampingWidget(),
             RentWidget(),
             TransferWidget(),
             WashingWidget(),

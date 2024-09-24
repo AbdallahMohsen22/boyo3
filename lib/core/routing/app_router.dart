@@ -52,7 +52,6 @@ import 'package:boyo3_v1/features/home_features/screens/drawer/drawer_screens/wh
 import 'package:boyo3_v1/features/home_features/screens/drawer/drawer_screen.dart';
 import 'package:boyo3_v1/features/home_features/screens/home/home_screen.dart';
 import 'package:boyo3_v1/features/home_features/screens/home/news/cubit/news_cubit.dart';
-import 'package:boyo3_v1/features/profile/profile_cuibt.dart';
 import 'package:boyo3_v1/features/splash/splash_screen.dart';
 import 'package:boyo3_v1/injection.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +60,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/home_features/screens/drawer/allAdsForUserApproved/all_services_approved_screen.dart';
 import '../../features/home_features/screens/drawer/allAdsForUserPending/all_ads_pending_screen.dart';
 import '../../features/home_features/screens/drawer/drawer_screens/allServicePending/allServicePendingAdmin.dart';
+import '../../features/profile/cuibt/profile_cubit.dart';
 import '../../features/profile/profile_screen.dart';
 
 class VehicleArgumet {

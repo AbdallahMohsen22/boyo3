@@ -365,7 +365,7 @@ class VehicleCubit extends Cubit<VehicleState> {
         city: cityController.text,
         longitude: longitude.toString(),
         latitude: latitude.toString(),
-        adsType: adsPackageId ==1 ? "Gold" : adsPackageId ==2?"Silver":adsPackageId ==3?"Bronze":adsPackageId ==4?"Free":"Nopackage",
+        adsType: adsPackageId == 1 ? "Gold" : adsPackageId ==2 ? "Silver" : adsPackageId == 3 ? "Bronze" : adsPackageId == 4 ? "Free" : "Nopackage",
         colorIn: colorInController.text,
         colorOut: colorOutController.text,
         yearMake: yearMakeController.text,

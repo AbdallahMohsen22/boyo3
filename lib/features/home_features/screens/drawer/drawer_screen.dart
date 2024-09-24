@@ -101,23 +101,23 @@ class _DrawerScreenState extends State<DrawerScreen> {
                               ],
                             ),
                           ///Profile
-                          // if (isSignIn == true)
-                          //   ListTile(
-                          //     onTap: () {
-                          //       context.pushNamed(Routes.profileScreen);
-                          //     },
-                          //     leading: const Icon(
-                          //       IconlyBold.profile,
-                          //     ),
-                          //     title: Text(
-                          //       HomeCubit.get(context).isArabic
-                          //           ? "الصفحة الشخصية"
-                          //           : "Profile",
-                          //       style: const TextStyle(
-                          //         fontWeight: FontWeightHelper.bold,
-                          //       ),
-                          //     ),
-                          //   ),
+                          if (isSignIn == true)
+                            ListTile(
+                              onTap: () {
+                                context.pushNamed(Routes.profileScreen);
+                              },
+                              leading: const Icon(
+                                IconlyBold.profile,
+                              ),
+                              title: Text(
+                                HomeCubit.get(context).isArabic
+                                    ? "الصفحة الشخصية"
+                                    : "Profile",
+                                style: const TextStyle(
+                                  fontWeight: FontWeightHelper.bold,
+                                ),
+                              ),
+                            ),
 
                           /// categories
                           ListTile(

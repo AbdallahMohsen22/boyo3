@@ -1,12 +1,13 @@
 import 'dart:io';
 import 'package:boyo3_v1/basic_constants.dart';
-import 'package:boyo3_v1/features/profile/profile_cuibt.dart';
+import 'package:boyo3_v1/core/helpers/extensitions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../basic_constants.dart';
 import '../../basic_constants.dart';
 import '../../basic_constants.dart';
@@ -14,19 +15,25 @@ import '../../basic_constants.dart';
 import '../../core/helpers/app_regs.dart';
 import '../../core/helpers/spacing.dart';
 import '../../core/network/api_constants.dart';
+import '../../core/routing/routes.dart';
 import '../../core/theming/colors.dart';
 import '../../core/theming/styles.dart';
 import '../../core/widgets/app_text_form_field.dart';
 import '../../core/widgets/boyo3_logo.dart';
 import '../../core/widgets/pick_image_widget.dart';
 import '../../core/widgets/shared_constants.dart';
+import '../../utils/dialog_utils.dart';
 import '../auth_features/login/widgets/password_validation.dart';
 import '../auth_features/register/cubit/register_cubit.dart';
 import '../auth_features/register/widgets/location_provider.dart';
 import '../basewidget/custom_textfield.dart';
 import '../home_features/cubit/home_cubit/home_cubit.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:image_picker/image_picker.dart';
+import 'cuibt/profile_cubit.dart';
+import 'cuibt/user_cuibt.dart';
+import 'delete_cuibt/delete_user_cuibt.dart';
+import 'delete_cuibt/delete_user_state.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key, required this.userId});
@@ -37,7 +44,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   bool isVisible = false;
   bool isObscureText = true;
   bool hasLowercase = false;
@@ -46,565 +52,556 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool hasNumber = false;
   bool hasMinLength = false;
 
-  late TextEditingController passwordController;
-  late final TextEditingController _nameController,
-      _emailController,
-      _passwordController,
-      _phoneController,
-      _userNameController;
-  late final FocusNode _nameFocusNode,
-      _emailFocusNode,
-      _phoneFocusNode,
-      _userNameFocusNode,
-      _passwordFocusNode;
+  final _formKey = GlobalKey<FormState>();
+  final _fullNameController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  bool _isAdmin = false;
+  File? _imageCover;
   bool obscureText = true;
   bool isLoading = false;
 
+  final ImagePicker _picker = ImagePicker();
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _imageCover = File(pickedFile.path);
+      }
+    });
+  }
 
   @override
   void initState() {
-    _nameController = TextEditingController();
-    _emailController = TextEditingController();
-    _phoneController = TextEditingController();
-    _passwordController = TextEditingController();
-    _userNameController = TextEditingController();
-    // Focus Nodes
-    _nameFocusNode = FocusNode();
-    _emailFocusNode = FocusNode();
-    _phoneFocusNode = FocusNode();
-    _passwordFocusNode = FocusNode();
-    _userNameFocusNode = FocusNode();
     super.initState();
+    context
+        .read<UserCubit>()
+        .fetchUser(userId!); // Fetch user info in initState
   }
 
-  // @override
-  // void dispose() {
-  //   _nameController.dispose();
-  //   _emailController.dispose();
-  //   _passwordController.dispose();
-  //   _userNameController.dispose();
-  //   // Focus Nodes
-  //   _nameFocusNode.dispose();
-  //   _emailFocusNode.dispose();
-  //   _passwordFocusNode.dispose();
-  //   _userNameFocusNode.dispose();
-  //   super.dispose();
-  // }
-
-
-  void setupPasswordControllerListener() {
-    passwordController.addListener(() {
-      setState(() {
-        hasLowercase = AppRegex.hasLowerCase(passwordController.text);
-        hasUppercase = AppRegex.hasUpperCase(passwordController.text);
-        hasSpecialCharacters =
-            AppRegex.hasSpecialCharacter(passwordController.text);
-        hasNumber = AppRegex.hasNumber(passwordController.text);
-        hasMinLength = AppRegex.hasMinLength(passwordController.text);
-      });
-    });
-  }
   MyLocationProvider myLocationProvider = MyLocationProvider();
   double? latitude = 0;
   double? longitude = 0;
   String textAlert = 'should take a  photo of your profile image';
 
-  //Api call
-  // void updateProfile(BuildContext context) async {
-  //   String fullName = _nameController.text.trim();
-  //   String userName = _userNameController.text.trim();
-  //   String email = _emailController.text.trim();
-  //   String password = _passwordController.text.trim();
-  //   String phone = _phoneController.text.trim();
-  //
-  //   // Validate inputs
-  //   if (email.isEmpty || password.isEmpty ||fullName.isEmpty||userName.isEmpty||phone.isEmpty) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(content: Text('Please complete all fields')),
-  //     );
-  //     return;
-  //   }
-  //
-  //   var headers = {
-  //     ApiConstants.contentTypeTitle: ApiConstants.contentTypeBody,
-  //     ApiConstants.tokenTitle: ApiConstants.tokenBody
-  //   };
-  //   // Request body as JSON
-  //   // Map<String, String> body = {
-  //   //   'Email':_emailController.text.trim(),
-  //   //   'Password': _passwordController.text.trim(),
-  //   // };
-  //
-  //   // Encode body to JSON
-  //   // String bodyJson = json.encode(body);
-  //
-  //   var data = FormData.fromMap({
-  //     'FullName': fullName,
-  //     'Username': userName,
-  //     'Email': email,
-  //     'Password': password,
-  //     'Phonenumber': phone,
-  //     'image': _pickedImage,
-  //   });
-  //   // Send POST request
-  //   var dio = Dio();
-  //   try {
-  //     print("API Call=====>>>> ");
-  //     var response = await dio.request(
-  //       '${ApiConstants.baseUrl}${ApiConstants.updateSubProfile}/9ddb91d5-9437-4b9f-8b38-2b2c5b104390',
-  //       options: Options(
-  //         method: 'PUT',
-  //         headers: headers,
-  //       ),
-  //       data: data,
-  //     );
-  //
-  //     // Check response status
-  //     if (response.statusCode == 200) {
-  //
-  //       Navigator.push(context, MaterialPageRoute(
-  //         builder: (context) => const HomeScreen(),));
-  //       print("API Response====>>> Profile Updated");
-  //       print("API Response====>>> ${response.data}");
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(content: Text('Profile updated successfully')),
-  //       );
-  //     } else {
-  //       // Show error message
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(content: Text('Update failed')),
-  //       );
-  //       print("API Response====>>>${response.statusCode}");
-  //     }
-  //   } catch (e) {
-  //     // Exception occurred
-  //     if (e is DioException) {
-  //       if (e.response!.statusCode == 400) {
-  //         // Handle the 400 error explicitly
-  //         print('API Response=====>>>>${e.response!.data['messages']}');
-  //         Constants.showToast(msg: e.response!.data['messages'],
-  //             gravity: ToastGravity.BOTTOM,
-  //             color: Colors.red);
-  //       } else {
-  //         // Handle other errors
-  //         print('Error: ${e.message}');
-  //         Constants.showToast(msg:e.message!,
-  //             gravity: ToastGravity.BOTTOM,
-  //             color: Colors.red);
-  //       }
-  //     }
-  //   }
-  // }
-
-  final _formKey = GlobalKey<FormState>();
-  File? _imageFile;
-  final ImagePicker _picker = ImagePicker();
-
-
-  XFile? _pickedImage;
-
-  Future<void> localImagePicker(context) async {
-    final ImagePicker picker = ImagePicker();
-    await Constants.imagePickerDialog(
-      context: context,
-      cameraFCT: () async {
-        _pickedImage = await picker.pickImage(source: ImageSource.camera);
-        setState(() {});
-      },
-      galleryFCT: () async {
-        _pickedImage = await picker.pickImage(source: ImageSource.gallery);
-        setState(() {});
-      },
-      removeFCT: () {
-        setState(() {
-          _pickedImage = null;
-        });
-      },
-
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProfileCubit(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Row(
+            children: [
+              const Boyo3AppBarLogo(),
+              const SizedBox(
+                width: 100,
+              ),
+              isAdmin == true ? Text("Admin") : Text("User"),
+            ],
+          ),
+        ),
+        body: BlocConsumer<UserCubit, UserState>(
+          listener: (context, state) {
+            if (state is UserErrorInfo) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
+            }
+          },
+          builder: (context, state) {
+            if (state is UserLoadingInfo) {
+              return Center(child: CircularProgressIndicator());
+            } else if (state is UserLoadedInfo) {
+              final user = state.user;
 
+              return SingleChildScrollView(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        height: 150,
+                        width: 150,
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: _imageCover == null
+                                      ? const CircleAvatar(
+                                          radius: 65,
+                                          backgroundImage: NetworkImage(
+                                              'https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'),
+                                        )
+                                      : Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                              border: Border.all(
+                                                  color: Colors.transparent),
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: FileImage(
+                                                  File(
+                                                    _imageCover!.path,
+                                                  ),
+                                                  //
+                                                ),
+                                              )),
+                                        )),
+                            ),
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Material(
+                                borderRadius: BorderRadius.circular(16.0),
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  splashColor: Colors.red,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  onTap: _pickImage,
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.add_a_photo,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
 
+                      AppTextFormField(
+                        hintText: user['fullName'],
+                        controller: _fullNameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return HomeCubit.get(context).isArabic
+                                ? 'الرجاءادخال الاسم'
+                                : "Please enter a valid full name";
+                          }
+                        },
+                        // controller: context.read<ProfileCubit>().fullNameController,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Row(
-          children: [
+                      AppTextFormField(
+                        hintText: user['userName'],
+                        controller: _usernameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return HomeCubit.get(context).isArabic
+                                ? 'الرجاءادخال اسم مستخدم صحيح'
+                                : "Please enter a valid username";
+                          }
+                        },
+                        // controller: context.read<ProfileCubit>().usernameController,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
 
-            Boyo3AppBarLogo(),
-            SizedBox(width: 100,),
-            isAdmin==true ? Text("Admin") : Text("User"),
-          ],
+                      AppTextFormField(
+                        keyboardType: TextInputType.number,
+                        hintText: user['phoneNumber'],
+                        controller: _phoneNumberController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return HomeCubit.get(context).isArabic
+                                ? 'الرجاءادخال رقم هاتف صحيح'
+                                : "Please enter a valid Phonenumber";
+                          }
+                        },
+                        // controller: context.read<ProfileCubit>().phonenumberController,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+
+                      AppTextFormField(
+                        hintText: user['email'],
+                        controller: _emailController,
+                        validator: (text) {
+                          if (text == null || text.trim().isEmpty) {
+                            return 'please enter Email Address';
+                          }
+
+                          if (!ValidationUtils.isValidEmail(text)) {
+                            return 'please enter a valid email';
+                          }
+                          return null;
+                        },
+                        // controller: context.read<ProfileCubit>().emailController,
+                      ),
+                      // const SizedBox(
+                      //   height: 16.0,
+                      // ),
+                      // AppTextFormField(
+                      //   controller: _passwordController,
+                      //   hintText:
+                      //   HomeCubit.get(context).isArabic ? "كلمة المرور الجديدة" : 'New Password',
+                      //   isObscureText: isObscureText,
+                      //   suffixIcon: GestureDetector(
+                      //     onTap: () {
+                      //       setState(() {
+                      //         isObscureText = !isObscureText;
+                      //       });
+                      //     },
+                      //     child: Icon(
+                      //       isObscureText ? Icons.visibility_off : Icons.visibility,
+                      //     ),
+                      //   ),
+                      //   validator: (value) {
+                      //     if (value == null || value.isEmpty) {
+                      //       return HomeCubit.get(context).isArabic
+                      //           ? "الرجاء إدخال كلمة السر الصحيحة"
+                      //           : 'Please enter a valid password';
+                      //     }
+                      //   },
+                      // ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     setState(() {
+                      //       isVisible = !isVisible;
+                      //     });
+                      //   },
+                      //   child: Row(
+                      //     children: [
+                      //       Text(
+                      //         HomeCubit.get(context).isArabic
+                      //             ? "قوة الباسورد "
+                      //             : 'Password validation',
+                      //         style: TextStyles.font15MainRed,
+                      //       ),
+                      //       const Spacer(),
+                      //       Icon(
+                      //         isVisible != true
+                      //             ? Icons.arrow_drop_down
+                      //             : Icons.arrow_drop_up,
+                      //         color: ColorsManager.mainRed,
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                      verticalSpace(5),
+
+                      //Visibility(
+                      //   visible: isVisible,
+                      //   child: PasswordValidations(
+                      //     hasLowerCase: hasLowercase,
+                      //     hasUpperCase: hasUppercase,
+                      //     hasSpecialCharacters: hasSpecialCharacters,
+                      //     hasNumber: hasNumber,
+                      //     hasMinLength: hasMinLength,
+                      //   ),
+                      // ),
+                      // verticalSpace(15),
+                      // FloatingActionButton.extended(
+                      //     backgroundColor: Colors.white,
+                      //     onPressed: () {
+                      //       getUserLocation();
+                      //     },
+                      //     icon: const Icon(
+                      //       IconlyBold.location,
+                      //       color: ColorsManager.mainRed,
+                      //     ),
+                      //     label: Text(
+                      //       HomeCubit.get(context).isArabic
+                      //           ? "احصل علي موقعي"
+                      //           : 'Get My location',
+                      //       style: TextStyles.font15MainRed,
+                      //     )),
+                      // verticalSpace(10),
+                      // Column(
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      //   children: [
+                      //     Row(
+                      //       children: [
+                      //         Text(
+                      //           'latitude : ',
+                      //           style: TextStyles.font15MainRed,
+                      //         ),
+                      //         const Spacer(),
+                      //         Text(
+                      //           latitude.toString(),
+                      //           style: TextStyles.font13BlackBold,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     verticalSpace(3),
+                      //     Row(
+                      //       children: [
+                      //         Text(
+                      //           'longitude : ',
+                      //           style: TextStyles.font15MainRed,
+                      //         ),
+                      //         const Spacer(),
+                      //         Text(
+                      //           longitude.toString(),
+                      //           style: TextStyles.font13BlackBold,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
+
+                      ///save button
+                      BlocConsumer<ProfileCubit, ProfileState>(
+                        listener: (context, state) {
+                          if (state is ProfileUpdateError) {
+                            Constants.showToast(
+                                msg: state.error,
+                                gravity: ToastGravity.BOTTOM,
+                                color: Colors.red);
+                          } else if (state is ProfileUpdated) {
+                            Constants.showToast(
+                                msg: state.message,
+                                gravity: ToastGravity.BOTTOM,
+                                color: Colors.green);
+                            context.pop();
+                          }
+                        },
+                        builder: (context, state) {
+                          return SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.all(12),
+                                backgroundColor: ColorsManager.mainRed,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    30,
+                                  ),
+                                ),
+                              ),
+                              //icon: const Icon(Icons.save_as_rounded),
+                              child: Text(
+                                HomeCubit.get(context).isArabic
+                                    ? "تحديث"
+                                    : 'Update',
+                                style: TextStyles.font16WhiteSemiBold,
+                              ),
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  BlocProvider.of<ProfileCubit>(context)
+                                      .updateProfile(
+                                    id: userId!, // Replace with the actual ID
+                                    fullName: _fullNameController.text,
+                                    username: _usernameController.text,
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                    phoneNumber: _phoneNumberController.text,
+                                    isAdmin: _isAdmin,
+                                    imageCover: _imageCover,
+                                  );
+                                }
+                                // userId == null ||userId == ""
+                                //     ? Constants.showErrorDialog(
+                                //     context: context,
+                                //     msg:
+                                //     "يجب تسجيل الدخول لتحديث البيانات ")
+                                //     : context.read<ProfileCubit>().imageCover == null ||
+                                //     context.read<ProfileCubit>().fullNameController.text.isEmpty||
+                                //     context.read<ProfileCubit>().usernameController.text.isEmpty||
+                                //     context.read<ProfileCubit>().emailController.text.isEmpty||
+                                //     context.read<ProfileCubit>().passwordController.text.isEmpty||
+                                //     context.read<ProfileCubit>().phonenumberController.text.isEmpty||
+                                //     context.read<ProfileCubit>().longitude == null||
+                                //     context.read<ProfileCubit>().latitude == null
+                                //     ? Constants.showErrorDialog(
+                                //     context: context,
+                                //     msg: "من فضلك قم بادخال البيانات الصحيحة اولا ")
+                                //     : validateThenUpdateProfile(context);
+                              },
+                            ),
+                          );
+                        },
+
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+
+                      BlocConsumer<DeleteUserCubit, DeleteUserState>(
+                        listener: (context, state) {
+                          if (state is DeleteUserSuccess) {
+
+                            Constants.showToast(
+                                msg: 'Account deleted successfully',
+                                gravity: ToastGravity.BOTTOM,
+                                color: Colors.green);
+                            Navigator.of(context).pop();  // Navigate after deletion
+                          } else if (state is DeleteUserFailure) {
+
+                            Constants.showToast(
+                                msg: state.error,
+                                gravity: ToastGravity.BOTTOM,
+                                color: Colors.red);
+                          }
+                        },
+                        builder: (context, state) {
+
+                          return SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.all(12),
+                                backgroundColor: ColorsManager.mainRed,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    30,
+                                  ),
+                                ),
+                              ),
+                              //icon: const Icon(Icons.save_as_rounded),
+                              child: Text(
+                                HomeCubit.get(context).isArabic
+                                    ? "حذف الحساب"
+                                    : 'Delete Account',
+                                style: TextStyles.font16WhiteSemiBold,
+                              ),
+                              onPressed: () async {
+                                DialogUtils.showMessage(
+                                    context,
+                                    HomeCubit.get(context).isArabic
+                                        ? 'هل أنت متأكد من حذف الحساب؟'
+                                        : 'Are you sure you want to delete your account?',
+                                    posActionTitle:
+                                    HomeCubit.get(context).isArabic
+                                        ? "نعم"
+                                        : "yes",
+                                    posAction: () async {
+                                      context.read<DeleteUserCubit>().deleteUser(userId!);
+                                  var prefs = await SharedPreferences.getInstance();
+                                  setState(() {
+                                    isSignIn = false;
+                                    userId=null;
+                                    userToken=null;
+
+                                  });
+                                  prefs.setBool('isAuth', false);
+                                  prefs.remove('userId');
+                                  prefs.remove('token');
+                                  context
+                                      .pushReplacementNamed(Routes.loginScreen);
+                                },
+                                    negActionTitle:
+                                    HomeCubit.get(context).isArabic
+                                        ? "لا"
+                                        : "no",
+                                    negAction: () {});
+
+                              },
+                            ),
+                          );
+                        }
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            } else if (state is UserErrorInfo) {
+              return Center(child: Text(state.message));
+            }
+            return Container();
+          },
         ),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            SizedBox(height: 30,),
-            context.read<ProfileCubit>().imageCover != null
-                ? Stack(
-              alignment: AlignmentDirectional.bottomEnd,
-              children: [
-                CircleAvatar(
-                  radius: 40.0.w,
-                  backgroundImage:
-                  //productImageFile != null?
-                  FileImage(context.read<ProfileCubit>().imageCover!),
-                  backgroundColor: Colors.transparent,
-                ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        removeCoverImage();
-                      });
-                    },
-                    icon: CircleAvatar(
-                      radius: 15.0.w,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.close,
-                        size: 13.0,
-                      ),
-                    )),
-              ],
-            )
-                : Stack(
-              alignment: AlignmentDirectional.bottomEnd,
-              children: [
-                CircleAvatar(
-                  radius: 40.0.w,
-                  backgroundImage: NetworkImage(
-                      'https://www.uochb.cz/user-photo/default.jpg'),
-                  backgroundColor: Colors.transparent,
-                ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                         getGalleryCoverImage();
-                      });
-                    },
-                    icon: CircleAvatar(
-                      radius: 15.0.w,
-                      backgroundColor: Colors.black,
-                      child: Icon(
-                        Icons.photo,
-                        color: Colors.white,
-                        size: 13.0.w,
-                      ),
-                    )),
-              ],
-            ),
-            AppTextFormField(
-              hintText:
-              HomeCubit.get(context).isArabic ? "الاسم بالكامل" : 'Full name',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return HomeCubit.get(context).isArabic
-                      ? 'الرجاءادخال الاسم'
-                      : "Please enter a valid full name";
-                }
-              },
-               // controller: context.read<ProfileCubit>().fullNameController,
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-
-            AppTextFormField(
-              hintText:
-              HomeCubit.get(context).isArabic ? "اسم المستخدم" : 'Username',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return HomeCubit.get(context).isArabic
-                      ? 'الرجاءادخال اسم مستخدم صحيح'
-                      : "Please enter a valid username";
-                }
-              },
-              // controller: context.read<ProfileCubit>().usernameController,
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-
-            AppTextFormField(
-              keyboardType: TextInputType.number,
-              hintText:
-              HomeCubit.get(context).isArabic ? "رقم الهاتف" : 'Phone number',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return HomeCubit.get(context).isArabic
-                      ? 'الرجاءادخال رقم هاتف صحيح'
-                      : "Please enter a valid Phonenumber";
-                }
-              },
-              // controller: context.read<ProfileCubit>().phonenumberController,
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-
-            AppTextFormField(
-              hintText:
-              HomeCubit.get(context).isArabic ? "البريد الالكتروني" : 'Email',
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) {
-                  return 'please enter Email Address';
-                }
-
-                if (!ValidationUtils.isValidEmail(text)) {
-                  return 'please enter a valid email';
-                }
-                return null;
-              },
-               // controller: context.read<ProfileCubit>().emailController,
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-            AppTextFormField(
-              controller: context.read<ProfileCubit>().passwordController,
-              hintText:
-              HomeCubit.get(context).isArabic ? "كلمة المرور الجديدة" : 'New Password',
-              isObscureText: isObscureText,
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isObscureText = !isObscureText;
-                  });
-                },
-                child: Icon(
-                  isObscureText ? Icons.visibility_off : Icons.visibility,
-                ),
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return HomeCubit.get(context).isArabic
-                      ? "الرجاء إدخال كلمة السر الصحيحة"
-                      : 'Please enter a valid password';
-                }
-              },
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  isVisible = !isVisible;
-                });
-              },
-              child: Row(
-                children: [
-                  Text(
-                    HomeCubit.get(context).isArabic?
-                    "قوة الباسورد ":'Password validation',
-                    style: TextStyles.font15MainRed,
-                  ),
-                  Spacer(),
-                  Icon(
-                    isVisible!=true? Icons.arrow_drop_down:Icons.arrow_drop_up,
-                    color: ColorsManager.mainRed,
-                  )
-                ],
-              ),
-            ),
-            verticalSpace(5),
-
-            Visibility(
-              visible: isVisible,
-              child: PasswordValidations(
-                hasLowerCase: hasLowercase,
-                hasUpperCase: hasUppercase,
-                hasSpecialCharacters: hasSpecialCharacters,
-                hasNumber: hasNumber,
-                hasMinLength: hasMinLength,
-              ),
-            ),
-            verticalSpace(15),
-            FloatingActionButton.extended(
-                backgroundColor: Colors.white,
-                onPressed: () {
-                  getUserLocation();
-                },
-                icon: const Icon(
-                  IconlyBold.location,
-                  color: ColorsManager.mainRed,
-                ),
-                label: Text(
-                  HomeCubit.get(context).isArabic
-                      ? "احصل علي موقعي"
-                      : 'Get My location',
-                  style: TextStyles.font15MainRed,
-                )),
-            verticalSpace(10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'latitude : ',
-                      style: TextStyles.font15MainRed,
-                    ),
-                    const Spacer(),
-                    Text(
-                      latitude.toString(),
-                      style: TextStyles.font13BlackBold,
-                    ),
-                  ],
-                ),
-                verticalSpace(3),
-                Row(
-                  children: [
-                    Text(
-                      'longitude : ',
-                      style: TextStyles.font15MainRed,
-                    ),
-                    const Spacer(),
-                    Text(
-                      longitude.toString(),
-                      style: TextStyles.font13BlackBold,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-
-            ///save button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(12),
-                  backgroundColor: ColorsManager.mainRed,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      30,
-                    ),
-                  ),
-                ),
-                //icon: const Icon(Icons.save_as_rounded),
-                child: Text(
-                  HomeCubit.get(context).isArabic?
-                  "تحديث":'Update',
-                  style: TextStyles.font16WhiteSemiBold,
-                ),
-                onPressed: () async {
-
-
-                  userId == null ||userId == ""
-                      ? Constants.showErrorDialog(
-                      context: context,
-                      msg:
-                      "يجب تسجيل الدخول لتحديث البيانات ")
-                      : context.read<ProfileCubit>().imageCover == null ||
-                      context.read<ProfileCubit>().fullNameController.text.isEmpty||
-                      context.read<ProfileCubit>().usernameController.text.isEmpty||
-                      context.read<ProfileCubit>().emailController.text.isEmpty||
-                      context.read<ProfileCubit>().passwordController.text.isEmpty||
-                      context.read<ProfileCubit>().phonenumberController.text.isEmpty||
-                      context.read<ProfileCubit>().longitude == null||
-                      context.read<ProfileCubit>().latitude == null
-                      ? Constants.showErrorDialog(
-                      context: context,
-                      msg: "من فضلك قم بادخال البيانات الصحيحة اولا ")
-                      : validateThenUpdateProfile(context);
-
-
-
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
+  // void validateThenUpdateProfile(BuildContext context) {
+  //
+  //   if (context.read<ProfileCubit>().formKey.currentState!.validate()) {
+  //     // Ensure all controllers are not null
+  //     if (context.read<ProfileCubit>().fullNameController.text.isNotEmpty &&
+  //         context.read<ProfileCubit>().usernameController.text.isNotEmpty &&
+  //         context.read<ProfileCubit>().emailController.text.isNotEmpty &&
+  //         context.read<ProfileCubit>().phonenumberController.text.isNotEmpty &&
+  //         context.read<ProfileCubit>().passwordController.text.isNotEmpty) {
+  //
+  //       // final updatedProfile = Profile(
+  //       //   id: userId,
+  //       //   fullName: context.read<ProfileCubit>().fullNameController.text,
+  //       //   username: context.read<ProfileCubit>().usernameController.text,
+  //       //   email: context.read<ProfileCubit>().emailController.text,
+  //       //   phone: context.read<ProfileCubit>().phonenumberController.text,
+  //       //   password: context.read<ProfileCubit>().passwordController.text,
+  //       //   imageUrl: context.read<ProfileCubit>().imageCover, // Ensure profile is not null
+  //       // );
+  //
+  //       context.read<ProfileCubit>().updateProfileState();
+  //       Constants.showToast(msg: "تم التحديث بنجاح");
+  //     } else {
+  //       // Handle empty fields or show an error message
+  //     }
+  //   }
+  //
+  // }
+  // void getUserLocation() async {
+  //   var locationData = await myLocationProvider.getLocation();
+  //   context.read<ProfileCubit>().latitude = locationData!.latitude;
+  //   context.read<ProfileCubit>().longitude = locationData.longitude;
+  //   setState(() {
+  //     latitude = context.read<ProfileCubit>().latitude;
+  //     longitude = context.read<ProfileCubit>().longitude;
+  //   });
+  //   Constants.showToast(msg: "تم أخذ الموقع بنجاح");
+  // }
 
-  void validateThenUpdateProfile(BuildContext context) {
-
-    if (context.read<ProfileCubit>().formKey.currentState!.validate()) {
-      // Ensure all controllers are not null
-      if (context.read<ProfileCubit>().fullNameController.text.isNotEmpty &&
-          context.read<ProfileCubit>().usernameController.text.isNotEmpty &&
-          context.read<ProfileCubit>().emailController.text.isNotEmpty &&
-          context.read<ProfileCubit>().phonenumberController.text.isNotEmpty &&
-          context.read<ProfileCubit>().passwordController.text.isNotEmpty) {
-
-        // final updatedProfile = Profile(
-        //   id: userId,
-        //   fullName: context.read<ProfileCubit>().fullNameController.text,
-        //   username: context.read<ProfileCubit>().usernameController.text,
-        //   email: context.read<ProfileCubit>().emailController.text,
-        //   phone: context.read<ProfileCubit>().phonenumberController.text,
-        //   password: context.read<ProfileCubit>().passwordController.text,
-        //   imageUrl: context.read<ProfileCubit>().imageCover, // Ensure profile is not null
-        // );
-
-        context.read<ProfileCubit>().updateProfileState();
-        Constants.showToast(msg: "تم التحديث بنجاح");
-      } else {
-        // Handle empty fields or show an error message
-      }
-    }
-
-  }
-  void getUserLocation() async {
-    var locationData = await myLocationProvider.getLocation();
-    context.read<ProfileCubit>().latitude = locationData!.latitude;
-    context.read<ProfileCubit>().longitude = locationData.longitude;
-    setState(() {
-      latitude = context.read<ProfileCubit>().latitude;
-      longitude = context.read<ProfileCubit>().longitude;
-    });
-    Constants.showToast(msg: "تم أخذ الموقع بنجاح");
-  }
-
-  final ImagePicker picker = ImagePicker();
-  String coverImageUrl = '';
-  XFile? coverImage;
-  File? coverImageFile;
-
-
-  Future<void> getGalleryCoverImage() async {
-    coverImage = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    if (coverImage != null) {
-      setState(() {
-        context.read<ProfileCubit>().imageCover = File(coverImage!.path);
-        textAlert = '';
-      });
-    } else {}
-  }
-
-  Future<void> getCameraCoverImage() async {
-    coverImage = await picker.pickImage(
-      source: ImageSource.camera,
-    );
-    if (coverImage != null) {
-      setState(() {
-        context.read<ProfileCubit>().imageCover = File(coverImage!.path);
-        textAlert = '';
-      });
-    } else {}
-  }
-
-  void removeCoverImage() {
-    setState(() {
-      context.read<ProfileCubit>().imageCover = null;
-
-    });
-  }
-
+  // final ImagePicker picker = ImagePicker();
+  // String coverImageUrl = '';
+  // XFile? coverImage;
+  // File? coverImageFile;
+  //
+  //
+  // Future<void> getGalleryCoverImage() async {
+  //   coverImage = await picker.pickImage(
+  //     source: ImageSource.gallery,
+  //   );
+  //   if (coverImage != null) {
+  //     setState(() {
+  //       context.read<ProfileCubit>().imageCover = File(coverImage!.path);
+  //       textAlert = '';
+  //     });
+  //   } else {}
+  // }
+  //
+  // Future<void> getCameraCoverImage() async {
+  //   coverImage = await picker.pickImage(
+  //     source: ImageSource.camera,
+  //   );
+  //   if (coverImage != null) {
+  //     setState(() {
+  //       context.read<ProfileCubit>().imageCover = File(coverImage!.path);
+  //       textAlert = '';
+  //     });
+  //   } else {}
+  // }
+  //
+  // void removeCoverImage() {
+  //   setState(() {
+  //     context.read<ProfileCubit>().imageCover = null;
+  //
+  //   });
+  // }
 }
-

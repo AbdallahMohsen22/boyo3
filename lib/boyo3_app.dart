@@ -8,6 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/profile/cuibt/user_cuibt.dart';
+import 'features/profile/delete_cuibt/delete_user_cuibt.dart';
+
 
 class Boyo3App extends StatelessWidget {
   final AppRouter appRouter;
@@ -29,26 +32,33 @@ class Boyo3App extends StatelessWidget {
         child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return MaterialApp(
-              builder: DevicePreview.appBuilder,
-              title: "Boyo3 App",
-              theme: appTheme(),  
-              localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const <Locale>[
-                Locale('en'), // English
-                Locale('ar'), // Spanish
-              ],
-              locale: HomeCubit.get(context).isArabic
-                  ? const Locale('ar')
-                  : const Locale('en'), //Locale(settingsProvider.currentLang),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider<UserCubit>(create: (context) => UserCubit()),
+                BlocProvider<DeleteUserCubit>(create: (context) => DeleteUserCubit()),
 
-              debugShowCheckedModeBanner: false,
-              initialRoute: Routes.splashScreen,
-              onGenerateRoute: appRouter.generateRoute,
+              ],
+              child: MaterialApp(
+                builder: DevicePreview.appBuilder,
+                title: "Boyo3 App",
+                theme: appTheme(),
+                localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const <Locale>[
+                  Locale('en'), // English
+                  Locale('ar'), // Spanish
+                ],
+                locale: HomeCubit.get(context).isArabic
+                    ? const Locale('ar')
+                    : const Locale('en'), //Locale(settingsProvider.currentLang),
+
+                debugShowCheckedModeBanner: false,
+                initialRoute: Routes.splashScreen,
+                onGenerateRoute: appRouter.generateRoute,
+              ),
             );
           },
         ),

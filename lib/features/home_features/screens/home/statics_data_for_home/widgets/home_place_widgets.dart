@@ -22,9 +22,9 @@ class _PlaceWidgetsState extends State<PlaceWidgets> {
       HomeCubit.get(context).isArabic ? "البحرين" : 'Bahrain',
     ];
     List<String> placeImage = [
-      "https://boyo3.com/wp-content/uploads/2023/08/%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-1.jpeg",
-      "https://boyo3.com/wp-content/uploads/2023/08/skyscrapers-palm-trees-dubai-uae-scaled.jpg",
-      "https://boyo3.com/wp-content/uploads/2023/08/%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D9%86-.jpg",
+      "https://www.edarabia.com/ar/wp-content/uploads/2021/07/learn-about-saudi-arabia-4-information-about-largest-country-arab-world.jpg",
+      "https://www.albayan.ae/polopoly_fs/1.3915686.1595104328!/image/image.jpg",
+      "https://7enews.net/wp-content/uploads/2023/06/%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D9%86.jpg",
     ];
 
     return Column(
