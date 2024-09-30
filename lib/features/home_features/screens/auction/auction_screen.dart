@@ -64,9 +64,9 @@ class _AuctionScreenState extends State<AuctionScreen> with SingleTickerProvider
                   animation:fadingAnimation!,
                     builder:(context,_)=> Opacity(
                   opacity: fadingAnimation!.value,
-                  child: Center(
+                  child: const Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(30.0),
+                      padding: EdgeInsets.all(30.0),
                       child: Text("Comming Soon",
                         style: TextStyle(
                             fontSize: 30,

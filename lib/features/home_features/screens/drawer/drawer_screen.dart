@@ -67,7 +67,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                               children: [
                                 ListTile(
                                   onTap: () {
-                                    context.pushNamed(Routes.loginScreen);
+                                    context.pushNamed(Routes.eulaScreenLogin);
                                   },
                                   leading: const Icon(
                                     IconlyBold.login,
@@ -84,7 +84,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                                 ///register
                                 ListTile(
                                   onTap: () {
-                                    context.pushNamed(Routes.confirmEmail);
+                                    context.pushNamed(Routes.eulaScreenRegister);
                                   },
                                   leading: const Icon(
                                     Icons.app_registration_rounded,
@@ -272,7 +272,25 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             ),
                           ),
 
-                          //سياسة الاستخدام
+                          ///about
+                          ListTile(
+                            onTap: () {
+                              context.pushNamed(Routes.eulaScreen);
+                            },
+                            leading: const Icon(
+                              IconlyBold.danger,
+                            ),
+                            title: Text(
+                              HomeCubit.get(context).isArabic
+                                  ? "شروط وأحكام اتفاقية ترخيص المستخدم النهائي"
+                                  : "EULA terms and conditions ",
+                              style: const TextStyle(
+                                fontWeight: FontWeightHelper.bold,
+                              ),
+                            ),
+                          ),
+
+                          //سياسة الاستخدام/
                           ListTile(
                             onTap: () {
                               context.pushNamed(Routes.usagePolicyScreen);
