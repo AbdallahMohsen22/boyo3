@@ -37,7 +37,7 @@ class AddCampingScreen extends StatelessWidget {
                 Column(
                   children: [
                     const AddServicesBasicImages(),
-                    verticalSpace(10),
+                    verticalSpace(20),
                     const AddCampingFields(),
                     verticalSpace(24),
 

@@ -113,7 +113,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             controller: context.read<ServiceCubit>().titleController,
           ),
 
-          verticalSpace(5),
+          verticalSpace(20),
           // DropDownButtonList(
           //   controller: context.read<ServiceCubit>().typeController,
           //   list: type1List,
@@ -169,7 +169,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().phoneNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                ///whatsapp
           AppTextFormField(
@@ -183,7 +183,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().whatsAppNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
          
 
@@ -199,7 +199,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().descriptionController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           //warranty
           // AppTextFormField(
           //   hintText: ' الضمان',
@@ -213,7 +213,6 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
           //   controller: context.read<ServiceCubit>().warrantyController,
           // ),
 
-          verticalSpace(10),
           DropDownButtonList(
             controller: context.read<ServiceCubit>().countryController,
             list: countryList,
@@ -221,7 +220,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             lableText: 'الدولة',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(5),    
+          verticalSpace(20),
 
           AppTextFormField(
             hintText: "المدينة",
@@ -234,7 +233,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().cityController,
           ),
-          verticalSpace(5),      
+          verticalSpace(20),
 
           
           //PublicStatus
@@ -277,7 +276,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().fromCountryController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
    
 
@@ -293,7 +292,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
             },
             controller: context.read<ServiceCubit>().toCountryController,
           ),
-          verticalSpace(15),
+          verticalSpace(20),
           FloatingActionButton.extended(
               backgroundColor: Colors.white,
               onPressed: () {
@@ -309,7 +308,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
                     : 'Get WorkShop location',
                 style: TextStyles.font15MainRed,
               )),
-          verticalSpace(10),
+          verticalSpace(20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -327,7 +326,7 @@ class _AddWorkshopsFieldsState extends State<AddWorkshopsFields> {
                   ),
                 ],
               ),
-              verticalSpace(3),
+              verticalSpace(5),
               Row(
                 children: [
                   Text(

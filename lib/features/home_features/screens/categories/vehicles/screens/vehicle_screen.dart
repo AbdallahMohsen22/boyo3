@@ -125,9 +125,9 @@ class _VehicleScreenState extends State<VehicleScreen>
                   fontSize: 20.sp,
                   fontFamily: "Jannah",
                 ),
-                unselectedLabelStyle: const TextStyle(
+                unselectedLabelStyle:  TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
+                  fontSize: 20.0.sp,
                   fontFamily: "Jannah",
                 ),
                 tabs: [

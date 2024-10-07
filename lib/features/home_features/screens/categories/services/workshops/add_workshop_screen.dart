@@ -37,7 +37,7 @@ class AddWorkshopScreen extends StatelessWidget {
                 Column(
                   children: [
                     const AddServicesBasicImages(),
-                    verticalSpace(10),
+                    verticalSpace(20),
                     AddWorkshopsFields(),
                     verticalSpace(24),
 

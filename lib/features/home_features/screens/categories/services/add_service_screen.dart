@@ -36,7 +36,7 @@ class AddServiceScreen extends StatelessWidget {
                 Column(
                   children: [
                     const AddServicesBasicImages(),
-                    verticalSpace(10),
+                    verticalSpace(20),
                     AddServicesFields(),
                     verticalSpace(24),
 

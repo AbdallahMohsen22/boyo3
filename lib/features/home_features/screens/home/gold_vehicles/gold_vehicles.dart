@@ -133,8 +133,8 @@ class _GoldVehiclesState extends State<GoldVehicles>
                   ],
                 ),
                 SizedBox(
-                  height: 142.0.h,
-                  child: const TabBarView(
+                  height: 170.0.h,
+                  child:  const TabBarView(
                       // controller: goldVehiclesTabController,
                       children: [
                         GetGoldCaravans(),

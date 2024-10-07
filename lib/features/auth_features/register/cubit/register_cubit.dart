@@ -27,6 +27,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   void emitRegisterStates() async {
     var prefs = await SharedPreferences.getInstance();
 
+    if (isClosed) return;
+
     emit(const RegisterState.loading());
     final response = await _registerRepo.register(
       email: emailController.text.trim(),
@@ -38,6 +40,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       latitude: latitude!.toString(),
       imageCover: imageCover??defImage,
     );
+    if (isClosed) return;
+
     response.when(success: (registerResponse) async {
       prefs.setBool('isAuth', true);
       prefs.setBool('isAdmin', registerResponse.isAdmin);
@@ -49,31 +53,42 @@ class RegisterCubit extends Cubit<RegisterState> {
       isSignIn = true;
       emit(RegisterState.success(registerResponse));
     }, failure: (error) {
-      emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
+      if (!isClosed) {
+        emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
+      }
     });
   }
-
   void emitConfirmEmail() async {
-    emit(const RegisterState.loading());
+    if (!isClosed) {
+      emit(RegisterState.loading());
+    }
     final response = await _registerRepo.confirmEmail(
       email: emailController.text,
     );
-    response.when(success: (confirmResponse) {
-      emit(RegisterState.success(confirmResponse));
-    }, failure: (error) {
-      emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
-    });
+    if (!isClosed) {
+      response.when(success: (confirmResponse) {
+        emit(RegisterState.success(confirmResponse));
+      }, failure: (error) {
+        emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
+      });
+    }
   }
 
   void emitConfirmOtp() async {
+    if (isClosed) return; // Prevent state emission if the Cubit is closed
+
     emit(const RegisterState.loading());
+
     final response = await _registerRepo.confirmOtp(
       otp: otpController.text,
     );
-    response.when(success: (confirmResponse) {
-      emit(RegisterState.success(confirmResponse));
-    }, failure: (error) {
-      emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
-    });
+
+    if (!isClosed) {
+      response.when(success: (confirmResponse) {
+        emit(RegisterState.success(confirmResponse));
+      }, failure: (error) {
+        emit(RegisterState.error(error: error.apiErrorModel.messages ?? ''));
+      });
+    }
   }
 }

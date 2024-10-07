@@ -65,7 +65,7 @@ class GoldWidget extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyles.font10BlackBold),
+                    style: TextStyles.font13BlackBold),
               )
             ],
           ),

@@ -33,7 +33,7 @@ class AddToolsScreen extends StatelessWidget {
                 Column(
                   children: [
                     const AddVehiclesBasicImages(),
-                    verticalSpace(10),
+                    verticalSpace(20),
                     AddToolsFields(),
                     verticalSpace(24),
 

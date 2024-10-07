@@ -20,6 +20,7 @@ class HomeCategory extends StatelessWidget {
             Text(HomeCubit.get(context).isArabic ? "الأقسام" : 'Categories',
                 style: TextStyles.font18BlackBold),
             const Spacer(),
+
             // TextButton(
             //     onPressed: () {
             //       context.pushNamed(Routes.categoriesScreen);
@@ -28,15 +29,15 @@ class HomeCategory extends StatelessWidget {
             //         style: TextStyles.font15MainRed))
           ],
         ),
-        verticalSpace(5),
+        verticalSpace(15),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
                   crossAxisCount:3,
-                  crossAxisSpacing: 4.w,
-                  mainAxisSpacing: 8.h,
+                  crossAxisSpacing: 25.w,
+                  mainAxisSpacing: 20.h,
                   height:95.h),
           itemBuilder: (_, index) {
             return CategoryItem(

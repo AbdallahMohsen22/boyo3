@@ -119,7 +119,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
           //   lableStyle: TextStyles.font14DarkBlueMedium,
           // ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           //  DropDownButtonList(
           //   controller: context.read<ServiceCubit>().type3Controller,
           //   list: type2List,
@@ -152,7 +152,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().priceController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
              ///phone
           AppTextFormField(
@@ -166,7 +166,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().phoneNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                ///whatsapp
           AppTextFormField(
@@ -180,7 +180,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().whatsAppNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
          
 
@@ -210,7 +210,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
           //   controller: context.read<ServiceCubit>().warrantyController,
           // ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<ServiceCubit>().countryController,
             list: countryList,
@@ -218,7 +218,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             lableText: 'الدولة',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(5),         
+          verticalSpace(20),
             AppTextFormField(
             hintText: "المدينة",
             keyboardType: TextInputType.name,
@@ -230,7 +230,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().cityController,
           ),
-          verticalSpace(5),         
+          verticalSpace(20),
 
           
           //PublicStatus
@@ -245,7 +245,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().countDayController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
          
           //PublicStatus
           AppTextFormField(
@@ -259,7 +259,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().countPersonController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
             //Security
           AppTextFormField(
@@ -273,7 +273,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().fromCountryController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                      //Size
           AppTextFormField(
@@ -287,7 +287,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
             },
             controller: context.read<ServiceCubit>().toCountryController,
           ),
-          verticalSpace(15),
+          verticalSpace(20),
           FloatingActionButton.extended(
               backgroundColor: Colors.white,
               onPressed: () {
@@ -303,7 +303,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
                     : 'Get Service location',
                 style: TextStyles.font15MainRed,
               )),
-          verticalSpace(10),
+          verticalSpace(20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -321,7 +321,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
                   ),
                 ],
               ),
-              verticalSpace(3),
+              verticalSpace(5),
               Row(
                 children: [
                   Text(

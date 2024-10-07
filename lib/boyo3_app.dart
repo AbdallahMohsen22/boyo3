@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/home_features/screens/categories/vehicles/block_user_cuibt.dart';
 import 'features/profile/cuibt/user_cuibt.dart';
 import 'features/profile/delete_cuibt/delete_user_cuibt.dart';
 
@@ -24,8 +25,11 @@ class Boyo3App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: MediaQuery.of(context).size.width >= 768
+        ? const Size(768, 1024)  // iPad size
+        : const Size(360, 690),  // Phone size
       minTextAdapt: true,
+      splitScreenMode: true,
       child: BlocProvider(
         create: (BuildContext context) =>
             HomeCubit()..changeAppLanguage(fromShared: isEnglish),
@@ -36,6 +40,7 @@ class Boyo3App extends StatelessWidget {
               providers: [
                 BlocProvider<UserCubit>(create: (context) => UserCubit()),
                 BlocProvider<DeleteUserCubit>(create: (context) => DeleteUserCubit()),
+                BlocProvider(create: (context) => BlockUserCubit()),
 
               ],
               child: MaterialApp(

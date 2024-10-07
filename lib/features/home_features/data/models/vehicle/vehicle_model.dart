@@ -7,6 +7,8 @@ class VehicleModel {
   int id;
   @JsonKey(name: "fullName")
   String fullName;
+  @JsonKey(name: "userId")
+  String userId;
   @JsonKey(name: "title")
   String title;
   @JsonKey(name: "description")
@@ -88,6 +90,7 @@ class VehicleModel {
   VehicleModel(
       this.id,
       this.title,
+      this.userId,
       this.description,
       this.type1,
       this.type2,
