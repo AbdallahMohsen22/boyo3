@@ -132,7 +132,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             controller: context.read<VehicleCubit>().titleController,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type2Controller,
             list: type2List,
@@ -141,7 +141,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type3Controller,
             list: type3List,
@@ -151,7 +151,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
           ),
 
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type4Controller,
             list: type4List,
@@ -159,7 +159,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             lableText: 'حالة البيع او الشراء',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(10),
+          verticalSpace(20),
 
             ///price
           AppTextFormField(
@@ -173,7 +173,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().priceController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
              ///phone
           AppTextFormField(
@@ -187,7 +187,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().phoneNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                ///whatsapp
           AppTextFormField(
@@ -201,7 +201,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().whatsAppNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
          
 
@@ -217,7 +217,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().descriptionController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           //warranty
           AppTextFormField(
             hintText: ' الضمان',
@@ -231,7 +231,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             controller: context.read<VehicleCubit>().warrantyController,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().countryController,
             list:countryList,
@@ -239,7 +239,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             lableText: 'الدولة',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           // DropDownButtonList(
           //   controller: context.read<VehicleCubit>().cityController,
@@ -269,7 +269,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().cityController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           // //ads type
           // AppTextFormField(
@@ -297,7 +297,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().colorInController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //color out
           AppTextFormField(
@@ -311,7 +311,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().colorOutController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     //year make
           AppTextFormField(
@@ -325,7 +325,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().yearMakeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //year make
           AppTextFormField(
@@ -339,7 +339,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().cylindersController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //kilometer
           AppTextFormField(
@@ -353,7 +353,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().kilometerController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     //addones
           AppTextFormField(
@@ -367,7 +367,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().addOnsController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           //PublicStatus
           AppTextFormField(
             hintText: 'الحاله العامه',
@@ -380,7 +380,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().publicStatusController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     //Faults
           AppTextFormField(
@@ -394,7 +394,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().faultsController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                               //Security
           AppTextFormField(
@@ -408,7 +408,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().securityController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
            //Specifications
           AppTextFormField(
@@ -422,7 +422,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().specificationsController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                      //Size
           AppTextFormField(
@@ -436,7 +436,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().sizeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                                //GeneratorType
           AppTextFormField(
@@ -450,7 +450,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().generatorTypeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                                          //AirConditionType
           AppTextFormField(
@@ -464,7 +464,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().airConditionTypeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           
                                          //AirConditionSize
@@ -479,7 +479,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().airConditionSizeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     
                                          //AirConditionCount
@@ -498,7 +498,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
                               
          //NormalOrSaylant
 ///
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().normalOrSaylantController,
             list: normalList,
@@ -506,7 +506,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             lableText: 'Norrmal Or Saylant',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           // AppTextFormField(
           //   hintText: 'NormalOrSaylant',
           //   keyboardType: TextInputType.text,
@@ -532,7 +532,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().numberOfParsonController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //height
           AppTextFormField(
@@ -546,7 +546,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
             },
             controller: context.read<VehicleCubit>().heightController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           FloatingActionButton.extended(
               backgroundColor: Colors.white,
               onPressed: () {
@@ -562,7 +562,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
                     : 'Get location',
                 style: TextStyles.font15MainRed,
               )),
-          verticalSpace(10),
+          verticalSpace(20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -580,7 +580,7 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
                   ),
                 ],
               ),
-              verticalSpace(3),
+              verticalSpace(5),
               Row(
                 children: [
                   Text(

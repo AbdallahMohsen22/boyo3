@@ -52,10 +52,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                             SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                                crossAxisCount: 3,
-                                crossAxisSpacing:10,
-                                mainAxisSpacing: 10,
-                                height: 110.h),
+                                crossAxisCount:3,
+                                crossAxisSpacing: 20.w,
+                                mainAxisSpacing: 20.h,
+                                height: 95.h),
                             itemBuilder: (_, index) {
                               return CategoryItem(
                                 index: index,

@@ -84,7 +84,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             controller: context.read<VehicleCubit>().titleController,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type2Controller,
             list: type2List,
@@ -93,7 +93,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type3Controller,
             list: type3List,
@@ -103,7 +103,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
           ),
 
           
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().type4Controller,
             list: type4List,
@@ -111,7 +111,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             lableText: 'حالة البيع او الشراء',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(10),
+          verticalSpace(20),
 
             ///price
           AppTextFormField(
@@ -125,7 +125,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().priceController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
              ///phone
           AppTextFormField(
@@ -139,7 +139,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().phoneNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                ///whatsapp
           AppTextFormField(
@@ -153,7 +153,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().whatsAppNumberController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
          
 
@@ -169,7 +169,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().descriptionController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           //warranty
           AppTextFormField(
             hintText: ' الضمان',
@@ -183,7 +183,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             controller: context.read<VehicleCubit>().warrantyController,
           ),
 
-          verticalSpace(10),
+          verticalSpace(20),
           DropDownButtonList(
             controller: context.read<VehicleCubit>().countryController,
             list: countryList,
@@ -191,7 +191,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             lableText: 'الدولة',
             lableStyle: TextStyles.font14DarkBlueMedium,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           AppTextFormField(
             hintText: 'المدينة',
@@ -204,7 +204,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().cityController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
 
           // //ads type
@@ -235,7 +235,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().colorOutController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     //year make
           AppTextFormField(
@@ -249,7 +249,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().yearMakeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //year make
           AppTextFormField(
@@ -263,7 +263,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().cylindersController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
           //kilometer
           AppTextFormField(
@@ -277,7 +277,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().kilometerController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                     //addones
           AppTextFormField(
@@ -291,7 +291,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().addOnsController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
           //PublicStatus
           AppTextFormField(
             hintText: 'الحاله العامه',
@@ -304,7 +304,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().publicStatusController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
             //Security
           AppTextFormField(
@@ -318,7 +318,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().securityController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
            //Specifications
           AppTextFormField(
@@ -332,7 +332,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().specificationsController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
                      //Size
           AppTextFormField(
@@ -346,9 +346,9 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
             },
             controller: context.read<VehicleCubit>().sizeController,
           ),
-          verticalSpace(5),
+          verticalSpace(20),
 
-          verticalSpace(15),
+
           FloatingActionButton.extended(
               backgroundColor: Colors.white,
               onPressed: () {
@@ -382,7 +382,7 @@ class _AddMotorCyclesFieldsState extends State<AddMotorCyclesFields> {
                   ),
                 ],
               ),
-              verticalSpace(3),
+              verticalSpace(5),
               Row(
                 children: [
                   Text(

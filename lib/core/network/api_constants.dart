@@ -73,7 +73,7 @@ class ApiConstants {
   static const String motorcycles = 'motorcycles';
   static const String tools = 'tools';
   static const String generators = 'generators';
-  static const String noData = 'NoData';
+  static const String noData = 'There is no data now';
   //services
   static const String camping = 'camping';
   static const String maintenance = 'maintenance';

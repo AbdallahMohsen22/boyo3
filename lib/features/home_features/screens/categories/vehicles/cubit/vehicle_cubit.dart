@@ -1,20 +1,13 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:boyo3_v1/basic_constants.dart';
-import 'package:boyo3_v1/core/helpers/extensitions.dart';
 import 'package:boyo3_v1/core/network/api_constants.dart';
-import 'package:boyo3_v1/core/widgets/shared_constants.dart';
 import 'package:boyo3_v1/features/home_features/domain/vehicle_repo.dart';
 import 'package:boyo3_v1/features/home_features/screens/categories/vehicles/cubit/vehicle_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
-import 'package:http/http.dart'as http;
 
-import '../../../../../../core/routing/routes.dart';
-import '../../../../cubit/home_cubit/home_cubit.dart';
 
 class VehicleCubit extends Cubit<VehicleState> {
   final VehicleRepo _vehicleRepo;

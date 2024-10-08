@@ -35,7 +35,7 @@ class VehiclesWidget extends StatelessWidget {
         // }
         return Padding(
           padding:  EdgeInsets.symmetric(
-              horizontal: 8.0.w, vertical: 3.0.h),
+              horizontal: 10.0.w, vertical: 10.0.h),
           child: InkWell(
             onTap: () {
               Navigator.pushNamed(context, Routes.vehicleDetails, arguments: vehicleModel);
@@ -106,8 +106,9 @@ class VehiclesWidget extends StatelessWidget {
                             vehicleModel.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15.0),
+                            style:  TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0.sp),
                           ),
 
                           ///price
@@ -116,13 +117,13 @@ class VehiclesWidget extends StatelessWidget {
                               textDirection: TextDirection.ltr,
                               style: TextStyles.font15MainRed
                           ),
-                          verticalSpace(5),
+                          verticalSpace(10),
 
                           Text(
                               vehicleModel.description,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyles.font13GreyBold
+                              style: TextStyles.font14GreyBold
                           )
                         ],
                       ),

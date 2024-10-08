@@ -33,22 +33,22 @@ class _GetProductsForHomeState extends State<GetProductsForHome> {
     return Column(
       children: [
         verticalSpace(5),
-        Row(
-          children: [
-            Text(
-                HomeCubit.get(context).isArabic
-                    ? "منتجات مميزه"
-                    : 'Special Products',
-                style: TextStyles.font18BlackBold),
-            Spacer(),
-            TextButton(
-                onPressed: () {
-                  context.pushNamed(Routes.shopScreen);
-                },
-                child: Text(HomeCubit.get(context).isArabic ? 'المزيد' : "More",
-                    style: TextStyles.font15MainRed))
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     Text(
+        //         HomeCubit.get(context).isArabic
+        //             ? "منتجات مميزه"
+        //             : 'Special Products',
+        //         style: TextStyles.font18BlackBold),
+        //     Spacer(),
+        //     TextButton(
+        //         onPressed: () {
+        //           context.pushNamed(Routes.shopScreen);
+        //         },
+        //         child: Text(HomeCubit.get(context).isArabic ? 'المزيد' : "More",
+        //             style: TextStyles.font15MainRed))
+        //   ],
+        // ),
         SizedBox(
          
           child: BlocBuilder<ShopCubit, ShopState>(

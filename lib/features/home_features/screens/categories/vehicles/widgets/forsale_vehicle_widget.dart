@@ -43,393 +43,393 @@ class _ForSaleVehicleWidgetState extends State<ForSaleVehicleWidget> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ///الدوله
-              PopupMenuButton(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          IconlyBold.filter,
-                          size: 22,
-                        ),
-                        horizontalSpace(5),
-                        Text(
-                          HomeCubit.get(context).isArabic
-                              ? "الدولة"
-                              : "Country",
-                          style: TextStyles.font15MainRed,
-                        )
-                      ],
-                    ),
-                  ),
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              "الكل",
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravan(context);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.emarates,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.emarates);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.elSaudia,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.elSaudia);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.qatar,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.qatar);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.elBahrin,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.elBahrin);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.kewait,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.kewait);
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              CountryNames.oman,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            getAllForSaleCaravanFilterByCountry(
-                                context, CountryNames.oman);
-                          });
-                        },
-                      ),
-
-                    ];
-                  }),
-
-              ///المدينه
-              // PopupMenuButton(
-              //     child: Padding(
-              //       padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-              //       child: Row(
-              //         children: [
-              //           const Icon(
-              //             IconlyBold.filter,
-              //             size: 22,
-              //           ),
-              //           horizontalSpace(5),
-              //           Text(
-              //             HomeCubit.get(context).isArabic
-              //                 ? "المدينه"
-              //                 : "city",
-              //             style: TextStyles.font15MainRed,
-              //           )
-              //         ],
-              //       ),
-              //     ),
-              //     itemBuilder: (BuildContext context) {
-              //       return [
-              //         PopupMenuItem(
-              //           child: Row(
-              //             children: [
-              //               Text(
-              //                 "الوكره",
-              //                 style: TextStyles.font15BlackBold,
-              //               ),
-              //               const Spacer(),
-              //               const Icon(
-              //                 IconlyLight.filter,
-              //               )
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             setState(() {
-              //               // getAllForSaleCaravanFilterByCity(
-              //               //     context, CountryNames.wakra);
-              //             });
-              //           },
-              //
-              //         ),
-              //         PopupMenuItem(
-              //           child: Row(
-              //             children: [
-              //               Text(
-              //                 CountryNames.elSaudia,
-              //                 style: TextStyles.font15BlackBold,
-              //               ),
-              //               const Spacer(),
-              //               const Icon(
-              //                 IconlyLight.filter,
-              //               )
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             setState(() {
-              //               getAllForSaleCaravanFilterByCountry(
-              //                   context, CountryNames.elSaudia);
-              //             });
-              //           },
-              //         ),
-              //         PopupMenuItem(
-              //           child: Row(
-              //             children: [
-              //               Text(
-              //                 CountryNames.qatar,
-              //                 style: TextStyles.font15BlackBold,
-              //               ),
-              //               const Spacer(),
-              //               const Icon(
-              //                 IconlyLight.filter,
-              //               )
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             setState(() {
-              //               getAllForSaleCaravanFilterByCountry(
-              //                   context, CountryNames.qatar);
-              //             });
-              //           },
-              //         ),
-              //         PopupMenuItem(
-              //           child: Row(
-              //             children: [
-              //               Text(
-              //                 CountryNames.elBahrin,
-              //                 style: TextStyles.font15BlackBold,
-              //               ),
-              //               const Spacer(),
-              //               const Icon(
-              //                 IconlyLight.filter,
-              //               )
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             setState(() {
-              //               getAllForSaleCaravanFilterByCountry(
-              //                   context, CountryNames.elBahrin);
-              //             });
-              //           },
-              //         ),
-              //         PopupMenuItem(
-              //           child: Row(
-              //             children: [
-              //               Text(
-              //                 "الكل",
-              //                 style: TextStyles.font15BlackBold,
-              //               ),
-              //               const Spacer(),
-              //               const Icon(
-              //                 IconlyLight.filter,
-              //               )
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             setState(() {
-              //               getAllForSaleCaravan(context);
-              //             });
-              //           },
-              //         ),
-              //       ];
-              //     }),
-
-              /// ألحاله
-              PopupMenuButton(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          IconlyBold.filter,
-                          size: 22,
-                        ),
-                        horizontalSpace(5),
-                        Text(
-                          HomeCubit.get(context).isArabic
-                              ? "الحالة"
-                              : "Condition",
-                          style: TextStyles.font15MainRed,
-                        )
-                      ],
-                    ),
-                  ),
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              ApiConstants.New,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            filterAdsByVehicleType1AndType2AndType3(
-                              context,
-                              ApiConstants.New,
-                            );
-                          });
-                        },
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          children: [
-                            Text(
-                              ApiConstants.used,
-                              style: TextStyles.font15BlackBold,
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              IconlyLight.filter,
-                            )
-                          ],
-                        ),
-                        onTap: () {
-                          setState(() {
-                            filterAdsByVehicleType1AndType2AndType3(
-                              context,
-                              ApiConstants.used,
-                            );
-                          });
-                        },
-                      ),
-                    ];
-                  }),
-
-              ///السعر
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-                child: InkWell(
-                  onTap: () {
-                    context.pushNamed(Routes.filterPriceVehiclesScreen);
-                  },
-                  child: Row(
-                    children: [
-                      const Icon(
-                        IconlyBold.filter,
-                        size: 22,
-                      ),
-                      horizontalSpace(5),
-                      Text(
-                        HomeCubit.get(context).isArabic ? "السعر" : "Price",
-                        style: TextStyles.font15MainRed,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: [
+          //     ///الدوله
+          //     PopupMenuButton(
+          //         child: Padding(
+          //           padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+          //           child: Row(
+          //             children: [
+          //               const Icon(
+          //                 IconlyBold.filter,
+          //                 size: 22,
+          //               ),
+          //               horizontalSpace(5),
+          //               Text(
+          //                 HomeCubit.get(context).isArabic
+          //                     ? "الدولة"
+          //                     : "Country",
+          //                 style: TextStyles.font15MainRed,
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //         itemBuilder: (BuildContext context) {
+          //           return [
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     "الكل",
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravan(context);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.emarates,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.emarates);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.elSaudia,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.elSaudia);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.qatar,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.qatar);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.elBahrin,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.elBahrin);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.kewait,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.kewait);
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     CountryNames.oman,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   getAllForSaleCaravanFilterByCountry(
+          //                       context, CountryNames.oman);
+          //                 });
+          //               },
+          //             ),
+          //
+          //           ];
+          //         }),
+          //
+          //     ///المدينه
+          //     // PopupMenuButton(
+          //     //     child: Padding(
+          //     //       padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+          //     //       child: Row(
+          //     //         children: [
+          //     //           const Icon(
+          //     //             IconlyBold.filter,
+          //     //             size: 22,
+          //     //           ),
+          //     //           horizontalSpace(5),
+          //     //           Text(
+          //     //             HomeCubit.get(context).isArabic
+          //     //                 ? "المدينه"
+          //     //                 : "city",
+          //     //             style: TextStyles.font15MainRed,
+          //     //           )
+          //     //         ],
+          //     //       ),
+          //     //     ),
+          //     //     itemBuilder: (BuildContext context) {
+          //     //       return [
+          //     //         PopupMenuItem(
+          //     //           child: Row(
+          //     //             children: [
+          //     //               Text(
+          //     //                 "الوكره",
+          //     //                 style: TextStyles.font15BlackBold,
+          //     //               ),
+          //     //               const Spacer(),
+          //     //               const Icon(
+          //     //                 IconlyLight.filter,
+          //     //               )
+          //     //             ],
+          //     //           ),
+          //     //           onTap: () {
+          //     //             setState(() {
+          //     //               // getAllForSaleCaravanFilterByCity(
+          //     //               //     context, CountryNames.wakra);
+          //     //             });
+          //     //           },
+          //     //
+          //     //         ),
+          //     //         PopupMenuItem(
+          //     //           child: Row(
+          //     //             children: [
+          //     //               Text(
+          //     //                 CountryNames.elSaudia,
+          //     //                 style: TextStyles.font15BlackBold,
+          //     //               ),
+          //     //               const Spacer(),
+          //     //               const Icon(
+          //     //                 IconlyLight.filter,
+          //     //               )
+          //     //             ],
+          //     //           ),
+          //     //           onTap: () {
+          //     //             setState(() {
+          //     //               getAllForSaleCaravanFilterByCountry(
+          //     //                   context, CountryNames.elSaudia);
+          //     //             });
+          //     //           },
+          //     //         ),
+          //     //         PopupMenuItem(
+          //     //           child: Row(
+          //     //             children: [
+          //     //               Text(
+          //     //                 CountryNames.qatar,
+          //     //                 style: TextStyles.font15BlackBold,
+          //     //               ),
+          //     //               const Spacer(),
+          //     //               const Icon(
+          //     //                 IconlyLight.filter,
+          //     //               )
+          //     //             ],
+          //     //           ),
+          //     //           onTap: () {
+          //     //             setState(() {
+          //     //               getAllForSaleCaravanFilterByCountry(
+          //     //                   context, CountryNames.qatar);
+          //     //             });
+          //     //           },
+          //     //         ),
+          //     //         PopupMenuItem(
+          //     //           child: Row(
+          //     //             children: [
+          //     //               Text(
+          //     //                 CountryNames.elBahrin,
+          //     //                 style: TextStyles.font15BlackBold,
+          //     //               ),
+          //     //               const Spacer(),
+          //     //               const Icon(
+          //     //                 IconlyLight.filter,
+          //     //               )
+          //     //             ],
+          //     //           ),
+          //     //           onTap: () {
+          //     //             setState(() {
+          //     //               getAllForSaleCaravanFilterByCountry(
+          //     //                   context, CountryNames.elBahrin);
+          //     //             });
+          //     //           },
+          //     //         ),
+          //     //         PopupMenuItem(
+          //     //           child: Row(
+          //     //             children: [
+          //     //               Text(
+          //     //                 "الكل",
+          //     //                 style: TextStyles.font15BlackBold,
+          //     //               ),
+          //     //               const Spacer(),
+          //     //               const Icon(
+          //     //                 IconlyLight.filter,
+          //     //               )
+          //     //             ],
+          //     //           ),
+          //     //           onTap: () {
+          //     //             setState(() {
+          //     //               getAllForSaleCaravan(context);
+          //     //             });
+          //     //           },
+          //     //         ),
+          //     //       ];
+          //     //     }),
+          //
+          //     /// ألحاله
+          //     PopupMenuButton(
+          //         child: Padding(
+          //           padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+          //           child: Row(
+          //             children: [
+          //               const Icon(
+          //                 IconlyBold.filter,
+          //                 size: 22,
+          //               ),
+          //               horizontalSpace(5),
+          //               Text(
+          //                 HomeCubit.get(context).isArabic
+          //                     ? "الحالة"
+          //                     : "Condition",
+          //                 style: TextStyles.font15MainRed,
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //         itemBuilder: (BuildContext context) {
+          //           return [
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     ApiConstants.New,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   filterAdsByVehicleType1AndType2AndType3(
+          //                     context,
+          //                     ApiConstants.New,
+          //                   );
+          //                 });
+          //               },
+          //             ),
+          //             PopupMenuItem(
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     ApiConstants.used,
+          //                     style: TextStyles.font15BlackBold,
+          //                   ),
+          //                   const Spacer(),
+          //                   const Icon(
+          //                     IconlyLight.filter,
+          //                   )
+          //                 ],
+          //               ),
+          //               onTap: () {
+          //                 setState(() {
+          //                   filterAdsByVehicleType1AndType2AndType3(
+          //                     context,
+          //                     ApiConstants.used,
+          //                   );
+          //                 });
+          //               },
+          //             ),
+          //           ];
+          //         }),
+          //
+          //     ///السعر
+          //
+          //     Padding(
+          //       padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+          //       child: InkWell(
+          //         onTap: () {
+          //           context.pushNamed(Routes.filterPriceVehiclesScreen);
+          //         },
+          //         child: Row(
+          //           children: [
+          //             const Icon(
+          //               IconlyBold.filter,
+          //               size: 22,
+          //             ),
+          //             horizontalSpace(5),
+          //             Text(
+          //               HomeCubit.get(context).isArabic ? "السعر" : "Price",
+          //               style: TextStyles.font15MainRed,
+          //             )
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           BlocBuilder<VehicleCubit, VehicleState>(
               builder: (context, VehicleState state) {
             return state.when(initial: () {

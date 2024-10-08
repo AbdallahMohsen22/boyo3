@@ -23,7 +23,7 @@ class _PlaceWidgetsState extends State<PlaceWidgets> {
     ];
     List<String> placeImage = [
       "https://www.edarabia.com/ar/wp-content/uploads/2021/07/learn-about-saudi-arabia-4-information-about-largest-country-arab-world.jpg",
-      "https://www.albayan.ae/polopoly_fs/1.3915686.1595104328!/image/image.jpg",
+      "https://img.youm7.com/ArticleImgs/2021/5/6/149376-%D8%A3%D8%A8%D9%88-%D8%B8%D8%A8%D9%89-(2).jpg",
       "https://7enews.net/wp-content/uploads/2023/06/%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D9%86.jpg",
     ];
 

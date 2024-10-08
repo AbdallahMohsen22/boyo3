@@ -65,15 +65,18 @@ class _GetGoldCaravansState extends State<GetGoldCaravans> {
           ),
         );
       }, success: (getGoldCaravanResponse) {
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-          child:ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-             itemCount: getGoldCaravanResponse.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GoldWidget(vehicle: getGoldCaravanResponse[index]);
-              })
+        return Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                 itemCount: getGoldCaravanResponse.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GoldWidget(vehicle: getGoldCaravanResponse[index]);
+                  }),
+            ),
+          ],
         );
       }, error: (error) {
         return Center(

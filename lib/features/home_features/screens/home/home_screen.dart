@@ -107,15 +107,23 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  verticalSpace(10),
                   const GetAllNews(),
+                  verticalSpace(20),
                   const GoldVehicles(),
+                  verticalSpace(20),
                   HomeCategory(),
+                  verticalSpace(20),
                   const GetProductsForHome(),
+                  verticalSpace(20),
                   GoldServiceWidgetForHome(),
+                  verticalSpace(20),
                   const HowWeWorkWidget(),
+                  verticalSpace(20),
                   const PlaceWidgets(),
+                  verticalSpace(20),
                   const ContactUsForHome(),
-                  verticalSpace(25)
+                  verticalSpace(25),
                 ],
               ),
             ),

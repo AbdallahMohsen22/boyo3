@@ -35,7 +35,7 @@ class AddCaravanScreen extends StatelessWidget {
                 Column(
                   children: [
                     const AddVehiclesBasicImages(),
-                    verticalSpace(10),
+                    verticalSpace(15),
                      AddCaravanFields(),
                     verticalSpace(24),
                     AppTextButton(

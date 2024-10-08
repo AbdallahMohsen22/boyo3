@@ -8,6 +8,8 @@ import 'package:boyo3_v1/features/auth_features/register/cubit/register_cubit.da
 import 'package:boyo3_v1/features/auth_features/register/email_confirmation.dart';
 import 'package:boyo3_v1/features/auth_features/register/otp_screen.dart';
 import 'package:boyo3_v1/features/auth_features/register/register_screen.dart';
+import 'package:boyo3_v1/features/eula/eula_screen_login.dart';
+import 'package:boyo3_v1/features/eula/eula_screen_register.dart';
 import 'package:boyo3_v1/features/home_features/data/models/service/service_model.dart';
 import 'package:boyo3_v1/features/home_features/data/models/shop/shop_items_model.dart';
 import 'package:boyo3_v1/features/home_features/data/models/vehicle/vehicle_model.dart';
@@ -57,6 +59,7 @@ import 'package:boyo3_v1/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/eula/eula_screen.dart';
 import '../../features/home_features/screens/drawer/allAdsForUserApproved/all_services_approved_screen.dart';
 import '../../features/home_features/screens/drawer/allAdsForUserPending/all_ads_pending_screen.dart';
 import '../../features/home_features/screens/drawer/drawer_screens/allServicePending/allServicePendingAdmin.dart';
@@ -77,6 +80,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
         );
+
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
@@ -139,6 +143,18 @@ class AppRouter {
       case Routes.whoAreWeScreen:
         return MaterialPageRoute(
           builder: (_) => WhoAreWeScreen(),
+        );
+      case Routes.eulaScreenLogin:
+        return MaterialPageRoute(
+          builder: (_) => const EulaScreenLogin(),
+        );
+      case Routes.eulaScreenRegister:
+        return MaterialPageRoute(
+          builder: (_) => const EulaScreenRegister(),
+        );
+      case Routes.eulaScreen:
+        return MaterialPageRoute(
+          builder: (_) => const EulaScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(

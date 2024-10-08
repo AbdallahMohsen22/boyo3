@@ -10,6 +10,9 @@ class Routes {
   static const String privacyPolicyScreen = '/privacyPolicyScreen';
   static const String usagePolicyScreen = '/usagePolicyScreen';
   static const String whoAreWeScreen = '/whoAreWeScreen';
+  static const String eulaScreen = '/eulaScreen';
+  static const String eulaScreenLogin = '/eulaScreenLogin';
+  static const String eulaScreenRegister = '/eulaScreenRegister';
   static const String otpScreen = '/otpScreen';
   static const String confirmEmail = '/confirmEmailScreen';
   static const String categoriesScreen = '/categoriesScreen';

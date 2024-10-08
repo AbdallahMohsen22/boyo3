@@ -33,22 +33,22 @@ class _GoldServiceWidgetForHomeState extends State<GoldServiceWidgetForHome> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Text(
-                HomeCubit.get(context).isArabic
-                    ? "خدمات مميزه"
-                    : 'Special Service',
-                style: TextStyles.font18BlackBold),
-            const Spacer(),
-            TextButton(
-                onPressed: () {
-                  context.pushNamed(Routes.serviceScreen);
-                },
-                child: Text(HomeCubit.get(context).isArabic ? 'المزيد' : "More",
-                    style: TextStyles.font15MainRed)),
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     Text(
+        //         HomeCubit.get(context).isArabic
+        //             ? "خدمات مميزه"
+        //             : 'Special Service',
+        //         style: TextStyles.font18BlackBold),
+        //     const Spacer(),
+        //     TextButton(
+        //         onPressed: () {
+        //           context.pushNamed(Routes.serviceScreen);
+        //         },
+        //         child: Text(HomeCubit.get(context).isArabic ? 'المزيد' : "More",
+        //             style: TextStyles.font15MainRed)),
+        //   ],
+        // ),
        BlocBuilder<ServiceCubit, ServiceState>(
         builder: (context, ServiceState state) {
       return state.when(initial: () {

@@ -59,7 +59,7 @@ class HowWeWorkWidget extends StatelessWidget {
                 HomeCubit.get(context).isArabic?
                 "assets/images/mechanism.png":"assets/images/mechanism_en.png",
                 width: double.infinity,
-                height: 150,
+                height: 200.h,
               ),
       ],
     );
