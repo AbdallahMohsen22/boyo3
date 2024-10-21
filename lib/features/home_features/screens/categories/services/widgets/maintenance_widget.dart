@@ -38,10 +38,12 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15.0.w),
                   child: Row(children: 
                   [
-                    const Icon(
-                    IconlyBold.filter,
-                    size: 22,
-                  ),
+                    Image.asset(
+                      'assets/images/country_icon.png',
+                      width: 20.h,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
                   horizontalSpace(5),
                    Text(
                     HomeCubit.get(context).isArabic?
@@ -57,13 +59,40 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                       child: Row(
                         children: [
                           Text(
+                            "الكل",
+                            style: TextStyles.font15BlackBold,
+                          ),
+                          const Spacer(),
+                          Image.asset(
+                            'assets/images/country_icon.png',
+                            width: 20.h,
+                            height: 20.h,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                      onTap: () {
+                        setState(() {
+                          getAllForMaintenanceService(
+                              context
+                          );
+                        });
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: Row(
+                        children: [
+                          Text(
                             CountryNames.emarates,
                             style: TextStyles.font15BlackBold,
                           ),
                           const Spacer(),
-                          const Icon(
-                            IconlyLight.filter,
-                          )
+                          Image.asset(
+                            'assets/images/emirates_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ),
                       onTap: () {
@@ -81,9 +110,12 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                             style: TextStyles.font15BlackBold,
                           ),
                           const Spacer(),
-                          const Icon(
-                            IconlyLight.filter,
-                          )
+                          Image.asset(
+                            'assets/images/sudia_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ),
                       onTap: () {
@@ -94,7 +126,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                       },
                     ),
                   
-                     PopupMenuItem(
+                    PopupMenuItem(
                       child: Row(
                         children: [
                           Text(
@@ -102,9 +134,12 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                             style: TextStyles.font15BlackBold,
                           ),
                           const Spacer(),
-                          const Icon(
-                            IconlyLight.filter,
-                          )
+                          Image.asset(
+                            'assets/images/qatar_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ),
                       onTap: () {
@@ -123,9 +158,12 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                             style: TextStyles.font15BlackBold,
                           ),
                           const Spacer(),
-                          const Icon(
-                            IconlyLight.filter,
-                          )
+                          Image.asset(
+                            'assets/images/bahrain_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ),
                       onTap: () {
@@ -137,27 +175,56 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                       },
                     ),
 
-                      PopupMenuItem(
+                    PopupMenuItem(
                       child: Row(
                         children: [
                           Text(
-                            "الكل",
+                            CountryNames.kewait,
                             style: TextStyles.font15BlackBold,
                           ),
                           const Spacer(),
-                          const Icon(
-                            IconlyLight.filter,
-                          )
+                          Image.asset(
+                            'assets/images/kuwait_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ),
                       onTap: () {
-                         setState(() {
-                          getAllForMaintenanceService(
-                              context
-                              );
+                        setState(() {
+                          getServiceByCountry(
+                              context,CountryNames.kewait
+                          );
                         });
                       },
                     ),
+                    PopupMenuItem(
+                      child: Row(
+                        children: [
+                          Text(
+                            CountryNames.oman,
+                            style: TextStyles.font15BlackBold,
+                          ),
+                          const Spacer(),
+                          Image.asset(
+                            'assets/images/oman_icon.png',
+                            width: 30.h,
+                            height: 30.h,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                      onTap: () {
+                        setState(() {
+                          getServiceByCountry(
+                              context,CountryNames.oman
+                          );
+                        });
+                      },
+                    ),
+
+
                  
                   ];
                 }),
@@ -205,6 +272,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
             );
           }, success: (getAllServiceResponse) {
             return ListView.builder(
+              reverse: true,
                 itemCount: getAllServiceResponse.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {

@@ -44,6 +44,7 @@ dependencies:
   url_launcher: ^6.2.5
   share_plus: ^9.0.0
   equatable: ^2.0.5
+  video_player: ^2.9.2
 
 dev_dependencies:
   build_runner: ^2.4.8
@@ -73,6 +74,7 @@ flutter:
         - asset: assets/fonts/TajawalBold.ttf
           weight: 700
   assets:
+    - assets/videos/intro.mp4
     - assets/images/
     - assets/images/splash.json
     - assets/images/boyo3_splash.json

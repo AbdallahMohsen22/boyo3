@@ -134,7 +134,7 @@ class _ServiceScreenState extends State<ServiceScreen>
         ),
         body: TabBarView(
           children: [
-            // MaintenanceWidget(),
+            MaintenanceWidget(),
             CampingWidget(),
             RentWidget(),
             TransferWidget(),

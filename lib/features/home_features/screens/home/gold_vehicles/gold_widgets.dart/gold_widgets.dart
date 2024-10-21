@@ -14,7 +14,7 @@ class GoldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110.w,
+      width: 120.w,
       child: Padding(
         padding: EdgeInsets.only(top: 5.h, left: 2.0.w, right: 2.w, bottom: 2.h),
         child: InkWell(
@@ -41,8 +41,8 @@ class GoldWidget extends StatelessWidget {
 
                         //"http://andrewfayez-001-site1.ltempurl.com/${vehicle.image1}",
                     fit: BoxFit.fill,
-                    height: 90.h,
-                    width: 90.w,
+                    height: 100.h,
+                    width: 100.w,
                     httpHeaders: const {
                       ApiConstants.tokenTitle: ApiConstants.tokenBody
                     },
@@ -65,7 +65,7 @@ class GoldWidget extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyles.font13BlackBold),
+                    style: TextStyles.font15BlackBold),
               )
             ],
           ),

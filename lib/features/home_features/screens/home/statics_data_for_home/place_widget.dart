@@ -2,6 +2,7 @@ import 'package:boyo3_v1/core/helpers/spacing.dart';
 import 'package:boyo3_v1/core/theming/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 
@@ -40,53 +41,58 @@ class PlaceWidget extends StatelessWidget {
                 ])),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              ),
-
-              child: CachedNetworkImage(
-                imageUrl:placeImageUrl!,
-                fit: BoxFit.fill,
-                height: 120.h,
-                width: double.infinity,
-                placeholder: (context, url) => const Center(
-                  child: Text(
-                    'Loading ...',
-                    style: TextStyle(
-                        color: Colors.green, fontSize: 15.0),
-                  ),
+            Expanded(
+              flex: 4,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
                 ),
-                errorWidget: (context, url, error) =>
-                const Icon(Icons.error),
-              ),
 
-              //Image.network(widget.product.imageUrl)
+                child: CachedNetworkImage(
+                  imageUrl:placeImageUrl!,
+                  fit: BoxFit.fill,
+                  height: 120.h,
+                  width: double.infinity,
+                  placeholder: (context, url) => const Center(
+                    child: Text(
+                      'Loading ...',
+                      style: TextStyle(
+                          color: Colors.green, fontSize: 15.0),
+                    ),
+                  ),
+                  errorWidget: (context, url, error) =>
+                  const Icon(Icons.error),
+                ),
+
+                //Image.network(widget.product.imageUrl)
+              ),
             ),
             verticalSpace(10),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  horizontalSpace(15),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        placeName!,
-                        style: TextStyles.font20BlackBold
-                      ),
-                     
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    IconlyBold.location
-                  )
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    horizontalSpace(15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          placeName!,
+                          style: TextStyles.font20BlackBold
+                        ),
 
-                 
-                ],
+                      ],
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      IconlyBold.location
+                    )
+
+
+                  ],
+                ),
               ),
             )
           ],

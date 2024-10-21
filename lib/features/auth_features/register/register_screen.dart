@@ -37,10 +37,10 @@ class RegisterScreen extends StatelessWidget {
                           : "Register",
                       textStyle: TextStyles.font16WhiteSemiBold,
                       onPressed: () {
-                        context.read<RegisterCubit>().imageCover == null?
-                        Constants.showErrorDialog(
-                                    context: context,
-                                    msg: "من فضلك قم بادخال صورتك الشخصية اولا "):
+                        // context.read<RegisterCubit>().imageCover == null?
+                        // Constants.showErrorDialog(
+                        //             context: context,
+                        //             msg: "من فضلك قم بادخال صورتك الشخصية اولا "):
                         validateThenDoRegister(context);
                       },
                     ),

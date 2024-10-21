@@ -20,11 +20,17 @@ class _PlaceWidgetsState extends State<PlaceWidgets> {
       HomeCubit.get(context).isArabic ? "السعوديه" : "Saudia Arabia",
       HomeCubit.get(context).isArabic ? "الإمارات" : 'The UAE',
       HomeCubit.get(context).isArabic ? "البحرين" : 'Bahrain',
+      HomeCubit.get(context).isArabic ? "الكويت" : 'kuwait',
+      HomeCubit.get(context).isArabic ? "قطر" : 'Qatar',
+      HomeCubit.get(context).isArabic ? "عمان" : 'Oman',
     ];
     List<String> placeImage = [
       "https://www.edarabia.com/ar/wp-content/uploads/2021/07/learn-about-saudi-arabia-4-information-about-largest-country-arab-world.jpg",
       "https://img.youm7.com/ArticleImgs/2021/5/6/149376-%D8%A3%D8%A8%D9%88-%D8%B8%D8%A8%D9%89-(2).jpg",
       "https://7enews.net/wp-content/uploads/2023/06/%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A%D9%86.jpg",
+      "https://www.seyyaha.com/wp-content/uploads/2024/02/eeKpvO4r-Kuwait-1200x800-1.jpg",
+      "https://www.qfc.qa/-/media/project/qfc/qfcwebsite/images/homepage/welcomemaincarousel.png?cx=0.5&amp;cy=0.5&amp;cw=1920&amp;ch=1080&amp;hash=3B449835343F1FCA21DE4AC7414C87D5",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROu60mU6JEdmHQQva3p4hL-GgEFBAmi7XToQ&s",
     ];
 
     return Column(
@@ -45,7 +51,7 @@ class _PlaceWidgetsState extends State<PlaceWidgets> {
         ),
         CarouselSlider.builder(
           options: CarouselOptions(
-            height: 190.h,
+            height: 250.h,
             enlargeCenterPage: false,
             autoPlay: true,
             aspectRatio: 15 / 14,
@@ -61,7 +67,7 @@ class _PlaceWidgetsState extends State<PlaceWidgets> {
                 // numberOfAds: placeAds[index]
                 );
           },
-          itemCount: 3,
+          itemCount: placeName.length,
         ),
       ],
     );

@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:boyo3_v1/core/routing/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
+import 'package:video_player/video_player.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({Key? key}) : super(key: key);
@@ -11,57 +10,53 @@ class SplashBody extends StatefulWidget {
   _SplashBodyState createState() => _SplashBodyState();
 }
 
-class _SplashBodyState extends State<SplashBody> with SingleTickerProviderStateMixin{
-
+class _SplashBodyState extends State<SplashBody> with SingleTickerProviderStateMixin {
+  late VideoPlayerController _controller;
   late Timer _timer;
 
   _goNext() => Navigator.pushReplacementNamed(context, Routes.homeScreen);
+
   _startDelay() {
-    _timer = Timer(const Duration(milliseconds: 6000), () => _goNext());
+    _timer = Timer(const Duration(seconds: 12), () => _goNext());
   }
+
   @override
   void initState() {
     super.initState();
+    // Initialize the video player controller
+    _controller = VideoPlayerController.asset('assets/videos/intro.mp4')
+      ..initialize().then((_) {
+        setState(() {}); // Refresh when video is initialized
+        _controller.play(); // Play the video
+        _controller.setLooping(false); // Set looping to false
+        _controller.setVolume(0.0); // Mute the video
+      });
     _startDelay();
   }
+
   @override
   void dispose() {
     _timer.cancel();
+    _controller.dispose(); // Dispose the video controller
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-          body: Center(
-            child:
-            Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.black,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.9),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Lottie.asset(
-                'assets/images/boyo3_lottie.json',
-                frameRate: FrameRate.max,
-                fit: BoxFit.cover,
-
-              ),
-            ),
-          )
-      );
-
+      body: _controller.value.isInitialized
+          ? SizedBox.expand(
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: SizedBox(
+            width: _controller.value.size.width,
+            height: _controller.value.size.height,
+            child: VideoPlayer(_controller),
+          ),
+        ),
+      )
+          : const Center(child: CircularProgressIndicator()), // Show loader until video is ready
+    );
   }
-
 }
