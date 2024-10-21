@@ -42,6 +42,7 @@ class VehiclesWidget extends StatelessWidget {
             },
             child: Container(
               width: double.infinity,
+              height: 120.h,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   boxShadow: const [
@@ -101,6 +102,20 @@ class VehiclesWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                vehicleModel.createdDate.substring(0,10),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style:  TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0.sp),
+                              ),
+                            ],
+                          ),
                           ///name
                           Text(
                             vehicleModel.title,
@@ -108,23 +123,26 @@ class VehiclesWidget extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style:  TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15.0.sp),
+                                fontSize: 18.0.sp),
                           ),
 
-                          ///price
-                          Text(
-                              "${vehicleModel.price} AED",
-                              textDirection: TextDirection.ltr,
-                              style: TextStyles.font15MainRed
-                          ),
-                          verticalSpace(10),
+                          verticalSpace(5),
+
+
 
                           Text(
                               vehicleModel.description,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyles.font14GreyBold
-                          )
+                          ),
+                          verticalSpace(10),
+                          ///price
+                          Text(
+                              "${vehicleModel.price} AED",
+                              textDirection: TextDirection.ltr,
+                              style: TextStyles.font15MainRed
+                          ),
                         ],
                       ),
                     )

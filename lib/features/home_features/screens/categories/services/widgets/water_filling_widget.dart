@@ -37,10 +37,12 @@ class _WaterFillingWidgetState extends State<WaterFillingWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15.0.w),
                   child: Row(children: 
                   [
-                    const Icon(
-                    IconlyBold.filter,
-                    size: 22,
-                  ),
+                    Image.asset(
+                      'assets/images/country_icon.png',
+                      width: 20.h,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
                   horizontalSpace(5),
                    Text(
                     HomeCubit.get(context).isArabic?

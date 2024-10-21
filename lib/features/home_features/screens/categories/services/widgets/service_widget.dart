@@ -86,21 +86,42 @@ class ServiceWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            serviceModel.createdDate.substring(0,10),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15.0),
+                          ),
+                        ],
+                      ),
                       ///name
                       Text(
                         serviceModel.title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                        style:  TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0.sp,color: ColorsManager.mainRed),
                       ),
       
-                      ///price
-                      if (serviceModel.price !=0)
-                       Text(
-                          "${serviceModel.price} AED",
-                        textDirection: TextDirection.ltr,
-                        style: TextStyles.font15MainRed
+                      // ///price
+                      // if (serviceModel.price !=0)
+                      //  Text(
+                      //     "${serviceModel.price} AED",
+                      //   textDirection: TextDirection.ltr,
+                      //   style: TextStyles.font15MainRed
+                      // ),
+
+                      Text(
+                        "${serviceModel.country} - ${serviceModel.city}",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style:  TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0.sp),
                       ),
                       verticalSpace(5),
      

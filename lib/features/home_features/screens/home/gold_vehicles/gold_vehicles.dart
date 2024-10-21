@@ -1,3 +1,4 @@
+import 'package:boyo3_v1/core/theming/colors.dart';
 import 'package:boyo3_v1/core/theming/styles.dart';
 import 'package:boyo3_v1/features/home_features/cubit/home_cubit/home_cubit.dart';
 import 'package:boyo3_v1/features/home_features/screens/home/gold_vehicles/gold_widgets.dart/gold_caravans.dart';
@@ -26,6 +27,7 @@ class _GoldVehiclesState extends State<GoldVehicles>
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
+              color: ColorsManager.mainRed.withOpacity(.2),
               border: Border.all(
                 color: Colors.black,
                 width: 1.0
