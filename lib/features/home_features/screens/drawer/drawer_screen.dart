@@ -62,44 +62,44 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
                           ///login
 
-                          if (isSignIn != true)
-                            Column(
-                              children: [
-                                ListTile(
-                                  onTap: () {
-                                    context.pushNamed(Routes.eulaScreenLogin);
-                                  },
-                                  leading: const Icon(
-                                    IconlyBold.login,
-                                  ),
-                                  title: Text(
-                                    HomeCubit.get(context).isArabic
-                                        ? "تسجيل الدخول "
-                                        : "Sign in",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeightHelper.bold,
-                                    ),
-                                  ),
-                                ),
-                                ///register
-                                ListTile(
-                                  onTap: () {
-                                    context.pushNamed(Routes.eulaScreenRegister);
-                                  },
-                                  leading: const Icon(
-                                    Icons.app_registration_rounded,
-                                  ),
-                                  title: Text(
-                                    HomeCubit.get(context).isArabic
-                                        ? "تسجيل جديد "
-                                        : "Register",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeightHelper.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          // if (isSignIn != true)
+                          //   Column(
+                          //     children: [
+                          //       ListTile(
+                          //         onTap: () {
+                          //           context.pushNamed(Routes.eulaScreenLogin);
+                          //         },
+                          //         leading: const Icon(
+                          //           IconlyBold.login,
+                          //         ),
+                          //         title: Text(
+                          //           HomeCubit.get(context).isArabic
+                          //               ? "تسجيل الدخول "
+                          //               : "Sign in",
+                          //           style: const TextStyle(
+                          //             fontWeight: FontWeightHelper.bold,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //       ///register
+                          //       ListTile(
+                          //         onTap: () {
+                          //           context.pushNamed(Routes.eulaScreenRegister);
+                          //         },
+                          //         leading: const Icon(
+                          //           Icons.app_registration_rounded,
+                          //         ),
+                          //         title: Text(
+                          //           HomeCubit.get(context).isArabic
+                          //               ? "تسجيل جديد "
+                          //               : "Register",
+                          //           style: const TextStyle(
+                          //             fontWeight: FontWeightHelper.bold,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
                           ///Profile
                           if (isSignIn == true)
                             ListTile(
