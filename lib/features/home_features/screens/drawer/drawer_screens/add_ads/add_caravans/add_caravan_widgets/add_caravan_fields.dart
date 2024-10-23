@@ -133,31 +133,105 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
           ),
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<VehicleCubit>().type2Controller,
-            list: type2List,
-            listValue: type2Value,
-            lableText: 'نوع الكرفان',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<VehicleCubit>().type2Controller,
+          //   list: type2List,
+          //   listValue: type2Value,
+          //   lableText: 'نوع الكرفان',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+        DropdownButtonFormField<String>(
+          value: type2Value,
+          onChanged: (String? newValue) {
+            // Update the selected value
+            context.read<VehicleCubit>().type2Controller.text = newValue ?? '';
+          },
+          items: type2List.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          decoration: InputDecoration(
+            labelText: 'نوع الكرفان',
+            labelStyle: TextStyles.font14DarkBlueMedium,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 1.3,
+              ),
+              borderRadius: BorderRadius.circular(30),
+            ), // You can customize the border style here
+          ),
+        ),
+
+
+        verticalSpace(20),
+          // DropDownButtonList(
+          //   controller: context.read<VehicleCubit>().type3Controller,
+          //   list: type3List,
+          //   listValue: type3Value,
+          //   lableText: 'حالة الكرفان',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+          DropdownButtonFormField<String>(
+            value: type3Value,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<VehicleCubit>().type3Controller.text = newValue ?? '';
+            },
+            items: type3List.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'حالة الكرفان',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
 
-          verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<VehicleCubit>().type3Controller,
-            list: type3List,
-            listValue: type3Value,
-            lableText: 'حالة الكرفان',
-            lableStyle: TextStyles.font14DarkBlueMedium,
-          ),
-
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<VehicleCubit>().type4Controller,
-            list: type4List,
-            listValue: type4Value,
-            lableText: 'حالة البيع او الشراء',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<VehicleCubit>().type4Controller,
+          //   list: type4List,
+          //   listValue: type4Value,
+          //   lableText: 'حالة البيع او الشراء',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+
+          DropdownButtonFormField<String>(
+            value: type4Value,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<VehicleCubit>().type4Controller.text = newValue ?? '';
+            },
+            items: type4List.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'حالة البيع او الشراء',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
           verticalSpace(20),
 
@@ -232,12 +306,37 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
           ),
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<VehicleCubit>().countryController,
-            list:countryList,
-            listValue: countryValue,
-            lableText: 'الدولة',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<VehicleCubit>().countryController,
+          //   list:countryList,
+          //   listValue: countryValue,
+          //   lableText: 'الدولة',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+
+          DropdownButtonFormField<String>(
+            value: countryValue,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<VehicleCubit>().countryController.text = newValue ?? '';
+            },
+            items: countryList.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'الدولة',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
           verticalSpace(20),
 
@@ -499,12 +598,37 @@ class _AddCaravanFieldsState extends State<AddCaravanFields> {
          //NormalOrSaylant
 ///
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<VehicleCubit>().normalOrSaylantController,
-            list: normalList,
-            listValue: normalValue,
-            lableText: 'Norrmal Or Saylant',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<VehicleCubit>().normalOrSaylantController,
+          //   list: normalList,
+          //   listValue: normalValue,
+          //   lableText: 'Norrmal Or Saylant',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+
+          DropdownButtonFormField<String>(
+            value: normalValue,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<VehicleCubit>().normalOrSaylantController.text = newValue ?? '';
+            },
+            items: normalList.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'Norrmal Or Saylant',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
           verticalSpace(20),
           // AppTextFormField(

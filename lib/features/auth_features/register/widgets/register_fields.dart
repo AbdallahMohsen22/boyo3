@@ -246,56 +246,56 @@ class _RegisterFieldsState extends State<RegisterFields> {
           ),
           verticalSpace(15),
 
-          verticalSpace(15),
-          FloatingActionButton.extended(
-              backgroundColor: Colors.white,
-              onPressed: () {
-                getUserLocation();
-              },
-              icon: const Icon(
-                IconlyBold.location,
-                color: ColorsManager.mainRed,
-              ),
-              label: Text(
-                HomeCubit.get(context).isArabic
-                    ? "احصل علي موقعي"
-                    : 'Get My location',
-                style: TextStyles.font15MainRed,
-              )),
-          verticalSpace(10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    'latitude : ',
-                    style: TextStyles.font15MainRed,
-                  ),
-                  const Spacer(),
-                  Text(
-                    latitude.toString(),
-                    style: TextStyles.font13BlackBold,
-                  ),
-                ],
-              ),
-              verticalSpace(3),
-              Row(
-                children: [
-                  Text(
-                    'longitude : ',
-                    style: TextStyles.font15MainRed,
-                  ),
-                  const Spacer(),
-                  Text(
-                    longitude.toString(),
-                    style: TextStyles.font13BlackBold,
-                  ),
-                ],
-              ),
-            ],
-          )
+          // verticalSpace(15),
+          // FloatingActionButton.extended(
+          //     backgroundColor: Colors.white,
+          //     onPressed: () {
+          //       getUserLocation();
+          //     },
+          //     icon: const Icon(
+          //       IconlyBold.location,
+          //       color: ColorsManager.mainRed,
+          //     ),
+          //     label: Text(
+          //       HomeCubit.get(context).isArabic
+          //           ? "احصل علي موقعي"
+          //           : 'Get My location',
+          //       style: TextStyles.font15MainRed,
+          //     )),
+          // verticalSpace(10),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: [
+          //     Row(
+          //       children: [
+          //         Text(
+          //           'latitude : ',
+          //           style: TextStyles.font15MainRed,
+          //         ),
+          //         const Spacer(),
+          //         Text(
+          //           latitude.toString(),
+          //           style: TextStyles.font13BlackBold,
+          //         ),
+          //       ],
+          //     ),
+          //     verticalSpace(3),
+          //     Row(
+          //       children: [
+          //         Text(
+          //           'longitude : ',
+          //           style: TextStyles.font15MainRed,
+          //         ),
+          //         const Spacer(),
+          //         Text(
+          //           longitude.toString(),
+          //           style: TextStyles.font13BlackBold,
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // )
         ],
       ),
     );

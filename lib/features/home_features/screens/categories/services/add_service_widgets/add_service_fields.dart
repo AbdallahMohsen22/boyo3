@@ -79,7 +79,7 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
     CountryNames.elSaudia,
     CountryNames.qatar,
     CountryNames.elBahrin,
-    CountryNames.iraq,
+    // CountryNames.iraq,
     CountryNames.kewait,
     CountryNames.oman,
   ];
@@ -118,12 +118,36 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
           ),
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<ServiceCubit>().typeController,
-            list: type1List,
-            listValue: type1Value,
-            lableText: 'نوع الخدمة ',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<ServiceCubit>().typeController,
+          //   list: type1List,
+          //   listValue: type1Value,
+          //   lableText: 'نوع الخدمة ',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+          DropdownButtonFormField<String>(
+            value: type1Value,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<ServiceCubit>().typeController.text = newValue ?? '';
+            },
+            items: type1List.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'نوع الخدمة',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
 
           verticalSpace(20),
@@ -135,12 +159,37 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
           //   lableStyle: TextStyles.font14DarkBlueMedium,
           // ),
 
-          DropDownButtonList(
-            controller: context.read<ServiceCubit>().type3Controller,
-            list: type3List,
-            listValue: type3Value,
-            lableText:  'مكان الخدمة ',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+
+          // DropDownButtonList(
+          //   controller: context.read<ServiceCubit>().type3Controller,
+          //   list: type3List,
+          //   listValue: type3Value,
+          //   lableText:  'مكان الخدمة ',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+          DropdownButtonFormField<String>(
+            value: type3Value,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<ServiceCubit>().type3Controller.text = newValue ?? '';
+            },
+            items: type3List.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'حالة الاداة',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
 
           
@@ -218,12 +267,36 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
           ),
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<ServiceCubit>().countryController,
-            list: countryList,
-            listValue: countryValue,
-            lableText: 'الدولة',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<ServiceCubit>().countryController,
+          //   list: countryList,
+          //   listValue: countryValue,
+          //   lableText: 'الدولة',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+          DropdownButtonFormField<String>(
+            value: countryValue,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<ServiceCubit>().countryController.text = newValue ?? '';
+            },
+            items: countryList.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'الدولة',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
           verticalSpace(20),
 
@@ -269,33 +342,33 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
           verticalSpace(20),
 
             //Security
-          AppTextFormField(
-            hintText: 'من دوله',
-            keyboardType: TextInputType.text,
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ) {
-                return 'من فضلك ادخل اسم الدوله';
-              }
-            },
-            controller: context.read<ServiceCubit>().fromCountryController,
-          ),
-          verticalSpace(20),
-
-   
-
-                     //Size
-          AppTextFormField(
-            hintText: 'الي دوله',
-            keyboardType: TextInputType.text,
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ) {
-                return 'من فضلك ادخل اسم المدينه';
-              }
-            },
-            controller: context.read<ServiceCubit>().toCountryController,
-          ),
+          // AppTextFormField(
+          //   hintText: 'من دوله',
+          //   keyboardType: TextInputType.text,
+          //   validator: (value) {
+          //     if (value == null ||
+          //         value.isEmpty ) {
+          //       return 'من فضلك ادخل اسم الدوله';
+          //     }
+          //   },
+          //   controller: context.read<ServiceCubit>().fromCountryController,
+          // ),
+          // verticalSpace(20),
+          //
+          //
+          //
+          //            //Size
+          // AppTextFormField(
+          //   hintText: 'الي دوله',
+          //   keyboardType: TextInputType.text,
+          //   validator: (value) {
+          //     if (value == null ||
+          //         value.isEmpty ) {
+          //       return 'من فضلك ادخل اسم المدينه';
+          //     }
+          //   },
+          //   controller: context.read<ServiceCubit>().toCountryController,
+          // ),
           verticalSpace(20),
 
           FloatingActionButton.extended(

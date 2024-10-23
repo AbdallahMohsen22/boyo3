@@ -127,8 +127,8 @@ class ServiceCubit extends Cubit<ServiceState> {
         latitude: latitude!.toString(),
         countDay: int.parse(countDayController.text),
         countPerson: int.parse(countPersonController.text),
-        fromCountry: fromCountryController.text,
-        toCountry: toCountryController.text,
+        fromCountry: "no data",//fromCountryController.text,
+        toCountry: "no data",//toCountryController.text,
         createdDate: "2-2-2025");
     response.when(success: (getAllServiceResponse) {
       emit(ServiceState.success(getAllServiceResponse));
