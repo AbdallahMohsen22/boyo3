@@ -36,8 +36,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       fullName: fullNameController.text.trim(),
       username: usernameController.text.trim(),
       phonenumber: phonenumberController.text.trim(),
-      longitude: longitude!.toString(),
-      latitude: latitude!.toString(),
+      longitude: "30",
+      latitude: "30",
       imageCover: imageCover??defImage,
     );
     if (isClosed) return;
