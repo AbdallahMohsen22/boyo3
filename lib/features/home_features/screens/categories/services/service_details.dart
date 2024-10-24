@@ -6,6 +6,7 @@ import 'package:boyo3_v1/core/widgets/boyo3_logo.dart';
 import 'package:boyo3_v1/features/home_features/cubit/home_cubit/home_cubit.dart';
 import 'package:boyo3_v1/features/home_features/data/models/service/service_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,149 +64,149 @@ class ServiceDetails extends StatelessWidget {
           children: [
             Column(
               children: [
-                FlutterCarousel(
-                  options: CarouselOptions(
-                    height: 170.0.h,
-                    viewportFraction: 1,
-                    enableInfiniteScroll: true,
-                    reverse: true,
-                    autoPlay: true,
-                    showIndicator: true,
-                    autoPlayInterval: const Duration(seconds: 2),
-                    autoPlayAnimationDuration:
-                        const Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.easeIn,
-                    slideIndicator: const CircularSlideIndicator(
-                      // currentIndicatorColor: ColorsManager.mainRed,
-                      // padding: EdgeInsets.all(5),
-
-                    ),
-                  ),
-                  items: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              "${ApiConstants.apiBaseUrlForImage}${serviceModel.image3}",
-                          fit: BoxFit.fill,
-                          height: 300.h,
-                          width: double.infinity,
-                          placeholder: (context, url) => Center(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SpinKitFadingCircle(
-                                      size: 20,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return DecoratedBox(
-                                          decoration: BoxDecoration(
-                                              color: index.isEven
-                                                  ? ColorsManager.mainRed
-                                                  : ColorsManager.mainRed),
-                                        );
-                                      })
-                                ],
-                              ),
-                            ),
-                          ),
-                          httpHeaders: const {
-                            ApiConstants.tokenTitle: ApiConstants.tokenBody
-                          },
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ),
-
-                        //Image.network(widget.product.imageUrl)
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              "${ApiConstants.apiBaseUrlForImage}${serviceModel.image2}",
-                          fit: BoxFit.fill,
-                          width: double.infinity,
-                          httpHeaders: const {
-                            ApiConstants.tokenTitle: ApiConstants.tokenBody
-                          },
-                          placeholder: (context, url) => Center(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SpinKitFadingCircle(
-                                      size: 20,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return DecoratedBox(
-                                          decoration: BoxDecoration(
-                                              color: index.isEven
-                                                  ? ColorsManager.mainRed
-                                                  : ColorsManager.mainRed),
-                                        );
-                                      })
-                                ],
-                              ),
-                            ),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ),
-
-                        //Image.network(widget.product.imageUrl)
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              "${ApiConstants.apiBaseUrlForImage}${serviceModel.image1}",
-                          fit: BoxFit.fill,
-                          httpHeaders: const {
-                            ApiConstants.tokenTitle: ApiConstants.tokenBody
-                          },
-                          height: 300.h,
-                          width: double.infinity,
-                          placeholder: (context, url) => Center(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SpinKitFadingCircle(
-                                      size: 20,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return DecoratedBox(
-                                          decoration: BoxDecoration(
-                                              color: index.isEven
-                                                  ? ColorsManager.mainRed
-                                                  : ColorsManager.mainRed),
-                                        );
-                                      })
-                                ],
-                              ),
-                            ),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ),
-
-                        //Image.network(widget.product.imageUrl)
-                      ),
-                    ),
-                  ],
-                ),
+                // FlutterCarousel(
+                //   options: CarouselOptions(
+                //     height: 170.0.h,
+                //     viewportFraction: 1,
+                //     enableInfiniteScroll: true,
+                //     reverse: true,
+                //     autoPlay: true,
+                //     //showIndicator: true,
+                //     autoPlayInterval: const Duration(seconds: 2),
+                //     autoPlayAnimationDuration:
+                //         const Duration(milliseconds: 800),
+                //     autoPlayCurve: Curves.easeIn,
+                //     //slideIndicator:  CircularSlideIndicator(
+                //       // currentIndicatorColor: ColorsManager.mainRed,
+                //       // padding: EdgeInsets.all(5),
+                //
+                //     //),
+                //   ),
+                //   items: [
+                //     Padding(
+                //       padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                //       child: ClipRRect(
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(20)),
+                //
+                //         child: CachedNetworkImage(
+                //           imageUrl:
+                //               "${ApiConstants.apiBaseUrlForImage}${serviceModel.image3}",
+                //           fit: BoxFit.fill,
+                //           height: 300.h,
+                //           width: double.infinity,
+                //           placeholder: (context, url) => Center(
+                //             child: SingleChildScrollView(
+                //               child: Column(
+                //                 children: [
+                //                   SpinKitFadingCircle(
+                //                       size: 20,
+                //                       itemBuilder:
+                //                           (BuildContext context, int index) {
+                //                         return DecoratedBox(
+                //                           decoration: BoxDecoration(
+                //                               color: index.isEven
+                //                                   ? ColorsManager.mainRed
+                //                                   : ColorsManager.mainRed),
+                //                         );
+                //                       })
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //           httpHeaders: const {
+                //             ApiConstants.tokenTitle: ApiConstants.tokenBody
+                //           },
+                //           errorWidget: (context, url, error) =>
+                //               const Icon(Icons.error),
+                //         ),
+                //
+                //         //Image.network(widget.product.imageUrl)
+                //       ),
+                //     ),
+                //     Padding(
+                //       padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                //       child: ClipRRect(
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(20)),
+                //
+                //         child: CachedNetworkImage(
+                //           imageUrl:
+                //               "${ApiConstants.apiBaseUrlForImage}${serviceModel.image2}",
+                //           fit: BoxFit.fill,
+                //           width: double.infinity,
+                //           httpHeaders: const {
+                //             ApiConstants.tokenTitle: ApiConstants.tokenBody
+                //           },
+                //           placeholder: (context, url) => Center(
+                //             child: SingleChildScrollView(
+                //               child: Column(
+                //                 children: [
+                //                   SpinKitFadingCircle(
+                //                       size: 20,
+                //                       itemBuilder:
+                //                           (BuildContext context, int index) {
+                //                         return DecoratedBox(
+                //                           decoration: BoxDecoration(
+                //                               color: index.isEven
+                //                                   ? ColorsManager.mainRed
+                //                                   : ColorsManager.mainRed),
+                //                         );
+                //                       })
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //           errorWidget: (context, url, error) =>
+                //               const Icon(Icons.error),
+                //         ),
+                //
+                //         //Image.network(widget.product.imageUrl)
+                //       ),
+                //     ),
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: ClipRRect(
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(20)),
+                //
+                //         child: CachedNetworkImage(
+                //           imageUrl:
+                //               "${ApiConstants.apiBaseUrlForImage}${serviceModel.image1}",
+                //           fit: BoxFit.fill,
+                //           httpHeaders: const {
+                //             ApiConstants.tokenTitle: ApiConstants.tokenBody
+                //           },
+                //           height: 300.h,
+                //           width: double.infinity,
+                //           placeholder: (context, url) => Center(
+                //             child: SingleChildScrollView(
+                //               child: Column(
+                //                 children: [
+                //                   SpinKitFadingCircle(
+                //                       size: 20,
+                //                       itemBuilder:
+                //                           (BuildContext context, int index) {
+                //                         return DecoratedBox(
+                //                           decoration: BoxDecoration(
+                //                               color: index.isEven
+                //                                   ? ColorsManager.mainRed
+                //                                   : ColorsManager.mainRed),
+                //                         );
+                //                       })
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //           errorWidget: (context, url, error) =>
+                //               const Icon(Icons.error),
+                //         ),
+                //
+                //         //Image.network(widget.product.imageUrl)
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(

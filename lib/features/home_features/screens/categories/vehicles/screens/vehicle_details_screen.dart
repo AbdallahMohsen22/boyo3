@@ -25,7 +25,7 @@ import '../block_user_cuibt.dart';
 class VehicleDetails extends StatelessWidget {
   final VehicleModel vehicleModel;
 
-   VehicleDetails({super.key, required this.vehicleModel});
+  VehicleDetails({super.key, required this.vehicleModel});
 
   void _launcherUrl(int value) async {
     String url = "";
@@ -240,61 +240,59 @@ class VehicleDetails extends StatelessWidget {
                         ///condition
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? " النوع :"
-                                            : "Type :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        )),
-                                    horizontalSpace(15),
-                                    Text(vehicleModel.type2,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        )),
-                                  ],
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? " النوع :"
+                                          : "Type :",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
+                                      )),
+                                  horizontalSpace(15),
+                                  Text(vehicleModel.type2,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black54,
+                                      )),
+                                ],
+                              ),
+                              verticalSpace(15),
+                              Row(
+                                children: [
+                                  Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? "الحالة :"
+                                          : "Condition :",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
+                                      )),
+                                  horizontalSpace(10),
+                                  Text(vehicleModel.type3,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black54,
+                                      )),
+                                ],
                               ),
                               //const Spacer(),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? "الحالة :"
-                                            : "Condition :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        )),
-                                    horizontalSpace(10),
-                                    Text(vehicleModel.type3,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        )),
-                                  ],
-                                ),
-                              ),
+
                             ],
                           ),
                         ),
@@ -302,15 +300,84 @@ class VehicleDetails extends StatelessWidget {
                         ///price
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Expanded(
-                                child: Row(
+                              Row(
+                                children: [
+                                  Text(
+                                    HomeCubit.get(context).isArabic
+                                        ? "سنة الصنع :"
+                                        : " year :",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeightHelper.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  horizontalSpace(10),
+                                  Text(
+                                    vehicleModel.yearMake,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeightHelper.bold,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              verticalSpace(15),
+                              Row(
+                                children: [
+                                  Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? "السعر : "
+                                          : "Price : ",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
+                                      )),
+                                  horizontalSpace(10),
+                                  Text(
+                                    "${vehicleModel.price} AED",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeightHelper.bold,
+                                      color: Colors.black54,
+                                    ),
+                                    // style:  TextStyle(
+                                    //     fontWeight: FontWeight.w400,
+                                    //     fontSize: 15.0,
+                                    //     color: Colors.red[900]
+                                    // ),
+                                  ),
+                                ],
+                              ),
+                              //horizontalSpace(5),
+
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Column(
+                            children: [
+                              if(vehicleModel.kilometer != 0)
+                                Row(
                                   children: [
                                     Text(
                                       HomeCubit.get(context).isArabic
-                                          ? "سنة الصنع :"
-                                          : " year :",
+                                          ? " الكيلومتر :"
+                                          : " Kilometer :",
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
@@ -321,7 +388,7 @@ class VehicleDetails extends StatelessWidget {
                                     ),
                                     horizontalSpace(10),
                                     Text(
-                                      vehicleModel.yearMake,
+                                      vehicleModel.kilometer.toString(),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
@@ -332,108 +399,35 @@ class VehicleDetails extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ),
-                              //horizontalSpace(5),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? "السعر : "
-                                            : "Price : ",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        )),
-                                    horizontalSpace(10),
-                                    Text(
-                                      "${vehicleModel.price} AED",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeightHelper.bold,
-                                        color: Colors.black54,
-                                      ),
-                                      // style:  TextStyle(
-                                      //     fontWeight: FontWeight.w400,
-                                      //     fontSize: 15.0,
-                                      //     color: Colors.red[900]
-                                      // ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
 
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
-                            children: [
-                              if(vehicleModel.kilometer != 0)
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? " الكيلومتر :"
-                                            : " Kilometer :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      horizontalSpace(10),
-                                      Text(
-                                        vehicleModel.kilometer.toString(),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                    ],
+                              verticalSpace(15),
+                              Row(
+                                children: [
+                                  Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? "الضمان : "
+                                          : "Warranty : ",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
+                                      )),
+                                  horizontalSpace(10),
+                                  Text(
+                                    vehicleModel.warranty,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeightHelper.bold,
+                                      color: Colors.black54,
+                                    ),
                                   ),
-                                ),
-
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? "الضمان : "
-                                            : "Warranty : ",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        )),
-                                    horizontalSpace(10),
-                                    Text(
-                                      vehicleModel.warranty,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeightHelper.bold,
-                                        color: Colors.black54,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                ],
                               ),
+
 
                             ],
                           ),
@@ -697,124 +691,124 @@ class VehicleDetails extends StatelessWidget {
                         verticalSpace(15),
                         ///air condition
                         //if (vehicleModel.airConditionCount != ApiConstants.noData)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 5.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? " عدد تكييف الهواء:"
-                                            : "Air Condition Count :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 5.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? " عدد تكييف الهواء:"
+                                          : "Air Condition Count :",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
                                       ),
-                                      horizontalSpace(10),
-                                      Text(
-                                        vehicleModel.airConditionCount.toString(),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        ),
+                                    ),
+                                    horizontalSpace(10),
+                                    Text(
+                                      vehicleModel.airConditionCount.toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black54,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                //const Spacer(),
-                              ],
-                            ),
+                              ),
+                              //const Spacer(),
+                            ],
                           ),
+                        ),
 
                         //if (vehicleModel.airConditionSize != ApiConstants.noData)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 5.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? " حجم تكييف الهواء:"
-                                            : "Air Condition Size :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 5.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? " حجم تكييف الهواء:"
+                                          : "Air Condition Size :",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
                                       ),
-                                      horizontalSpace(10),
-                                      Text(
-                                        vehicleModel.airConditionSize.toString(),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        ),
+                                    ),
+                                    horizontalSpace(10),
+                                    Text(
+                                      vehicleModel.airConditionSize.toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black54,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                //const Spacer(),
-                              ],
-                            ),
+                              ),
+                              //const Spacer(),
+                            ],
                           ),
+                        ),
 
                         //if (vehicleModel.airConditionType != ApiConstants.noData)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 5.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        HomeCubit.get(context).isArabic
-                                            ? " نوع تكييف الهواء:"
-                                            : "Air Condition Type :",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black,
-                                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 5.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      HomeCubit.get(context).isArabic
+                                          ? " نوع تكييف الهواء:"
+                                          : "Air Condition Type :",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black,
                                       ),
-                                      horizontalSpace(10),
-                                      Text(
-                                        vehicleModel.airConditionType,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeightHelper.bold,
-                                          color: Colors.black54,
-                                        ),
+                                    ),
+                                    horizontalSpace(10),
+                                    Text(
+                                      vehicleModel.airConditionType,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeightHelper.bold,
+                                        color: Colors.black54,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                //const Spacer(),
-                              ],
-                            ),
+                              ),
+                              //const Spacer(),
+                            ],
                           ),
+                        ),
                         verticalSpace(15),
                         defaultLine(),
                         verticalSpace(15),
@@ -826,71 +820,68 @@ class VehicleDetails extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10.0, vertical: 10.0),
-                            child: Row(
+                            child: Column(
                               children: [
                                 if (vehicleModel.colorOut != ApiConstants.noData)
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          HomeCubit.get(context).isArabic
-                                              ? " اللون الخارجي :"
-                                              : " Color Out :",
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeightHelper.bold,
-                                            color: Colors.black,
-                                          ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        HomeCubit.get(context).isArabic
+                                            ? " اللون الخارجي :"
+                                            : " Color Out :",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeightHelper.bold,
+                                          color: Colors.black,
                                         ),
-                                        horizontalSpace(0),
-                                        Text(
-                                          vehicleModel.colorOut,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeightHelper.bold,
-                                            color: Colors.black54,
-                                          ),
+                                      ),
+                                      horizontalSpace(0),
+                                      Text(
+                                        vehicleModel.colorOut,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeightHelper.bold,
+                                          color: Colors.black54,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
 
-
+                                verticalSpace(15),
 
                                 if (vehicleModel.colorIn != ApiConstants.noData)
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          HomeCubit.get(context).isArabic
-                                              ? " اللون الداخلي :"
-                                              : " Color in :",
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeightHelper.bold,
-                                            color: Colors.black,
-                                          ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        HomeCubit.get(context).isArabic
+                                            ? " اللون الداخلي :"
+                                            : " Color in :",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeightHelper.bold,
+                                          color: Colors.black,
                                         ),
-                                        horizontalSpace(5),
-                                        Text(
-                                          vehicleModel.colorIn,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeightHelper.bold,
-                                            color: Colors.black54,
-                                          ),
+                                      ),
+                                      horizontalSpace(5),
+                                      Text(
+                                        vehicleModel.colorIn,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeightHelper.bold,
+                                          color: Colors.black54,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
+
 
                               ],
                             ),
@@ -927,13 +918,13 @@ class VehicleDetails extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  vehicleModel.description,
+                                    vehicleModel.description,
 
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeightHelper.bold,
-                                    color: Colors.black54,
-                                  )
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeightHelper.bold,
+                                      color: Colors.black54,
+                                    )
                                 ),
                               ),
                             ],
@@ -1046,12 +1037,12 @@ class VehicleDetails extends StatelessWidget {
                                     builder: (dialogContext) {
                                       return AlertDialog(
                                         title: Text(
-                                            HomeCubit.get(context).isArabic
-                                                ? 'اختر السبب'
-                                                ' (مع العلم انه بناءً على تقارير المحتوى غير المقبول في غضون 24 ساعة سيتم إزالة المحتوى وطرد المستخدم الذي قدم المحتوى المسيء) '
-                                                : 'Select a Reason (Please note that based on reports of objectionable content, the content will be removed within 24 hours and the user who provided the offensive content will be removed.)',
+                                          HomeCubit.get(context).isArabic
+                                              ? 'اختر السبب'
+                                              ' (مع العلم انه بناءً على تقارير المحتوى غير المقبول في غضون 24 ساعة سيتم إزالة المحتوى وطرد المستخدم الذي قدم المحتوى المسيء) '
+                                              : 'Select a Reason (Please note that based on reports of objectionable content, the content will be removed within 24 hours and the user who provided the offensive content will be removed.)',
                                           style: TextStyle(
-                                            color: ColorsManager.mainRed
+                                              color: ColorsManager.mainRed
                                           ),
                                         ),
                                         content: SingleChildScrollView(

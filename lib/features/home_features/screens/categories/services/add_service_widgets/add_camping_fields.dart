@@ -84,7 +84,7 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
     CountryNames.elSaudia,
     CountryNames.qatar,
     CountryNames.elBahrin,
-    CountryNames.iraq,
+    // CountryNames.iraq,
     CountryNames.kewait,
     CountryNames.oman,
   ];
@@ -211,12 +211,36 @@ class _AddCampingFieldsState extends State<AddCampingFields> {
           // ),
 
           verticalSpace(20),
-          DropDownButtonList(
-            controller: context.read<ServiceCubit>().countryController,
-            list: countryList,
-            listValue: countryValue,
-            lableText: 'الدولة',
-            lableStyle: TextStyles.font14DarkBlueMedium,
+          // DropDownButtonList(
+          //   controller: context.read<ServiceCubit>().countryController,
+          //   list: countryList,
+          //   listValue: countryValue,
+          //   lableText: 'الدولة',
+          //   lableStyle: TextStyles.font14DarkBlueMedium,
+          // ),
+          DropdownButtonFormField<String>(
+            value: countryValue,
+            onChanged: (String? newValue) {
+              // Update the selected value
+              context.read<ServiceCubit>().countryController.text = newValue ?? '';
+            },
+            items: countryList.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'الدولة',
+              labelStyle: TextStyles.font14DarkBlueMedium,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ), // You can customize the border style here
+            ),
           ),
           verticalSpace(20),
             AppTextFormField(
