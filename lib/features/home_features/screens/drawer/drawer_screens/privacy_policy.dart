@@ -13,7 +13,7 @@ class PrivacyPolicy extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          HomeCubit.get(context).isArabic?"سياسة الخصوصية":"Privacy Policy"
+            HomeCubit.get(context).isArabic?"سياسة الخصوصية":"Privacy Policy"
         ),
       ),
       body: Center(
@@ -104,7 +104,7 @@ class PrivacyPolicy extends StatelessWidget {
                     :
                 "We may send a small file to your computer or device when you visit our website (“cookie”). This will enable us to recognize your computer, track your behavior on our website and identify your specific areas of interest in order to personalize and enhance your experience on this website. We may use cookies to collect and store personal data, and we link information stored using cookies to personal data you provide to us. You can adjust your browser settings to refuse cookies, but this may prevent you from using certain parts of the Platform.If you engage or inquire about any lead, referral or similar service we may provide, we may use the information you submit, as well as other data we may have or obtain from other sources, in determining which of our participating professionals may be willing, able and /or qualified to address your potential needs or interests and assist them or others in doing so. We may forward information about you to or share it with a particular professional, and this information may include that information in addition to personal information we obtain through our registration form or otherwise. These professionals, their affiliates, contractors, advertisers, agents or other identified persons may use this information and contact you regarding your potential needs or interests, as we may do. “Professional or Professionals” means individuals, companies, other organizations or persons who act as real estate professionals or are otherwise engaged in business related to the Platform.Third-party vendors, including Google and Facebook, use cookies to serve ads based on a user's previous visits to the platform. Google and Facebook's use of cookies (the DART cookie in Google's case) allows them and their partners to serve ads to users based on their visits to the Platform and/or other sites on the Internet. Users may opt out of (1) the DART cookie by visiting the Google website; (2) and Facebook cookies by visiting the Facebook Ad Preferences page."
                 ),
-               verticalSpace(10),
+                verticalSpace(10),
 
                 //7
 
@@ -160,7 +160,7 @@ class PrivacyPolicy extends StatelessWidget {
                     :
                 "If you have any questions or concerns regarding this Privacy Policy or the way we handle personal data, please contact us at: boyo3.com. If at any time you would like us to stop processing your information, please send a message to our administration department and include “Opt Out” as the subject line."
                 ),
-               verticalSpace(10),
+                verticalSpace(10),
 
 
                 //11
