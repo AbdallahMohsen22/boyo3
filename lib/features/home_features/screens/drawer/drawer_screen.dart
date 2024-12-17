@@ -383,16 +383,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                                         HomeCubit.get(context).isArabic
                                             ? "نعم"
                                             : "yes", posAction: () async {
-                                  var prefs =
-                                      await SharedPreferences.getInstance();
+                                  var prefs = await SharedPreferences.getInstance();
                                   setState(() {
                                     isSignIn = false;
                                   });
                                   prefs.setBool('isAuth', false);
                                   prefs.remove('userId');
                                   prefs.remove('token');
-                                  context
-                                      .pushReplacementNamed(Routes.homeScreen);
+                                  context.pushReplacementNamed(Routes.homeScreen);
                                 },
                                     negActionTitle:
                                         HomeCubit.get(context).isArabic

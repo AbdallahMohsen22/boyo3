@@ -166,7 +166,7 @@ abstract class ApiService {
 
   //filter by country type 1 and 2
   @GET(
-      "http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1={ads1}&ads2={ads2}&Country={Country}")
+      "https://backend.boyo3.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1={ads1}&ads2={ads2}&Country={Country}")
   Future<List<VehicleModel>> filterAdsByVehicleType1AndType2AndCountry(
     @Path('ads1') String vehicleType,
     @Path('ads2') String type2,
@@ -175,17 +175,17 @@ abstract class ApiService {
 
 
   // @GET(
-  //     "http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1={ads1}&ads2={ads2}&Country={Country}")
+  //     "https://backend.boyo3.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1={ads1}&ads2={ads2}&Country={Country}")
   // Future<List<VehicleModel>> filterAdsByVehicleType1AndType2AndCity(
   //     @Path('ads1') String vehicleType,
   //     @Path('ads2') String type2,
   //     @Path('City') String city,
   //     );
 ///
-  //http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1=Cars&ads2=wanted&ads3=%D9%85%D8%B3%D8%AA%D8%B9%D9%85%D9%84
+  //https://backend.boyo3.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1=Cars&ads2=wanted&ads3=%D9%85%D8%B3%D8%AA%D8%B9%D9%85%D9%84
 
     @GET(
-      "http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1={ads1}&ads2={ads2}&ads3={ads3}"
+      "https://backend.boyo3.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1={ads1}&ads2={ads2}&ads3={ads3}"
       )
   Future<List<VehicleModel>> getVehiclesByType1And2And3(
     @Path('ads1') String vehicleType,
@@ -195,7 +195,7 @@ abstract class ApiService {
   //
 
      @GET(
-      "http://boyo33-001-site1.ktempurl.com/api/SearchInAdsAndService/SearchInAdsUsingPrice?minPrice={minPrice}&maxPrice={maxPrice}"
+      "https://backend.boyo3.com/api/SearchInAdsAndService/SearchInAdsUsingPrice?minPrice={minPrice}&maxPrice={maxPrice}"
       )
   Future<List<VehicleModel>> getVehiclesByPrice(
     @Path('minPrice') double minPrice,
@@ -356,7 +356,7 @@ abstract class ApiService {
   );
   
   // filter by country
-  @GET("http://boyo33-001-site1.ktempurl.com/api/FilterService/GetAllServiceType1AndCountry?serv1={servName}&Country={Country}")
+  @GET("https://backend.boyo3.com/api/FilterService/GetAllServiceType1AndCountry?serv1={servName}&Country={Country}")
   Future<List<ServiceModel>> getServiceByCountry(
     @Path('servName') String servName,
     @Path('Country') String country,
@@ -398,15 +398,15 @@ abstract class ApiService {
   @GET(ApiConstants.getAllAdsPackages)
   Future<List<PackageModel>> getAllAdsPackages();
 
-  //http://boyo33-001-site1.ktempurl.com/api/AdsPackage/GetUserAdsPackages?userId=0a40f3af-f67b-4d13-a265-cbbff12dadd9
+  //https://backend.boyo3.com/api/AdsPackage/GetUserAdsPackages?userId=0a40f3af-f67b-4d13-a265-cbbff12dadd9
  @GET("${ApiConstants.getUserAdsPackages}{userId}")
   Future<List<PackageModel>> getUserAdsPackages(
     @Path('userId') String userId
   );
 
-//http://boyo33-001-site1.ktempurl.com/api/ServicePackage/GetUserServicePackages?userId=0a40f3af-f67b-4d13-a265-cbbff12dadd9
+//https://backend.boyo3.com/api/ServicePackage/GetUserServicePackages?userId=0a40f3af-f67b-4d13-a265-cbbff12dadd9
 
-  @GET("http://boyo33-001-site1.ktempurl.com/api/ServicePackage/GetUserServicePackages?userId={userId}")
+  @GET("https://backend.boyo3.com/api/ServicePackage/GetUserServicePackages?userId={userId}")
   Future<List<ServicePackageModel>> getUserServicesPackages(
     @Path('userId') String userId
   );

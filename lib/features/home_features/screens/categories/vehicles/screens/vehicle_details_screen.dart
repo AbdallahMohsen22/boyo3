@@ -814,7 +814,6 @@ class VehicleDetails extends StatelessWidget {
                         verticalSpace(15),
 
                         /// colors
-
                         if (vehicleModel.colorOut != ApiConstants.noData &&
                             vehicleModel.colorIn != ApiConstants.noData)
                           Padding(

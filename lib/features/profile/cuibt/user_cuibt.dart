@@ -22,23 +22,6 @@ class UserErrorInfo extends UserState {
 
   UserErrorInfo(this.message);
 }
-/////////////////////////////////////////////
-
-// class GetallUserInitial extends UserState {}
-//
-// class GetallUserLoading extends UserState {}
-//
-// class GetallUserSuccess extends UserState {
-//   final List<User> users;
-//
-//   GetallUserSuccess(this.users);
-// }
-//
-// class GetallUserFailure extends UserState {
-//   final String error;
-//
-//   GetallUserFailure(this.error);
-// }
 
 
 class UserCubit extends Cubit<UserState> {
@@ -48,7 +31,7 @@ class UserCubit extends Cubit<UserState> {
   void fetchUser(String userId) async {
     emit(UserLoadingInfo());
     try {
-      final response = await http.get(Uri.parse('http://boyo33-001-site1.ktempurl.com/api/Auth/GetOneUser?userId=$userId'));
+      final response = await http.get(Uri.parse('https://backend.boyo3.com/api/Auth/GetOneUser?userId=$userId'));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

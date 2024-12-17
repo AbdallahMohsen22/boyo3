@@ -9,7 +9,7 @@ class DeleteUserCubit extends Cubit<DeleteUserState> {
   Future<void> deleteUser(String userId) async {
     emit(DeleteUserLoading());
     try {
-      final url = 'http://boyo33-001-site1.ktempurl.com/api/Auth/DeleteUser?userId=$userId';
+      final url = 'https://backend.boyo3.com/api/Auth/DeleteUser?userId=$userId';
       final response = await http.delete(Uri.parse(url));
 
       if (response.statusCode == 200) {

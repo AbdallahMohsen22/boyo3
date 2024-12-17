@@ -79,7 +79,6 @@ class _AddServicesFieldsState extends State<AddServicesFields> {
     CountryNames.elSaudia,
     CountryNames.qatar,
     CountryNames.elBahrin,
-    // CountryNames.iraq,
     CountryNames.kewait,
     CountryNames.oman,
   ];

@@ -18,7 +18,7 @@ class VehicleCubit extends Cubit<VehicleState> {
   // })async{
   //
   //   Response response = await http.get(
-  //     Uri.parse("http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsCity"),
+  //     Uri.parse("https://backend.boyo3.com/api/FilterAds/GetAllAdsCity"),
   //     headers: {
   //       "cache-control": "no-cache",
   //       "content-type": "application/json",

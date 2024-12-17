@@ -11,7 +11,7 @@ class BlockUserCubit extends Cubit<void> {
   BlockUserCubit() : super(null);
 
   Future<void> blockUser(String userId, String blockedUserId) async {
-    final url = 'http://boyo33-001-site1.ktempurl.com/api/BlockUser/AddBlockOnUser?userId=$userId&blockedUserId=$blockedUserId';
+    final url = 'https://backend.boyo3.com/api/BlockUser/AddBlockOnUser?userId=$userId&blockedUserId=$blockedUserId';
 
     try {
       final response = await http.post(Uri.parse(url));
@@ -40,7 +40,7 @@ class BlockUserCubit extends Cubit<void> {
   }
 
   Future<void> reportUser(String userId, int adsId, String text) async {
-    final url = 'http://boyo33-001-site1.ktempurl.com/api/BlockUser/AddUserReport?userId=$userId&adsId=$adsId&text=$text';
+    final url = 'https://backend.boyo3.com/api/BlockUser/AddUserReport?userId=$userId&adsId=$adsId&text=$text';
 
     try {
       final response = await http.post(Uri.parse(url));

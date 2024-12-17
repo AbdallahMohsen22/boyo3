@@ -125,7 +125,7 @@ class _AllAdsPendingScreenState extends State<AllAdsPendingScreen> {
                         ),
                         child: CachedNetworkImage(
                           imageUrl:
-                          'http://boyo33-001-site1.ktempurl.com/${ad.image1}',
+                          'https://backend.boyo3.com/${ad.image1}',
 
                           //"http://andrewfayez-001-site1.ltempurl.com/${getAllProductResponse[index].image1}",
                           fit: BoxFit.fill,

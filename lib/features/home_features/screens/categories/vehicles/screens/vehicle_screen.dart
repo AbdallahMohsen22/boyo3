@@ -152,7 +152,7 @@ class _VehicleScreenState extends State<VehicleScreen>
                 verticalSpace(10),
                 Expanded(
                   child: TabBarView(children: [
-                     ForSaleVehicleWidget(
+                    ForSaleVehicleWidget(
                       type1: widget.type1,
                     ),
                     RentVehiclesWidget(type1: widget.type1),

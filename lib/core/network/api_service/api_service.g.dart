@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://boyo33-001-site1.ktempurl.com/api/';
+    baseUrl ??= 'https://backend.boyo3.com/api/';
   }
 
   final Dio _dio;
@@ -939,7 +939,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1=${vehicleType}&ads2=${type2}&Country={Country}',
+          'https://backend.boyo3.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1=${vehicleType}&ads2=${type2}&Country={Country}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -978,7 +978,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1=${vehicleType}&ads2=${type2}&ads3=${carCondition}',
+          'https://backend.boyo3.com/api/FilterAds/GetAllAdsType1AndType2And3?ads1=${vehicleType}&ads2=${type2}&ads3=${carCondition}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -1016,7 +1016,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'http://boyo33-001-site1.ktempurl.com/api/SearchInAdsAndService/SearchInAdsUsingPrice?minPrice=${minPrice}&maxPrice=${maxPrice}',
+          'https://backend.boyo3.com/api/SearchInAdsAndService/SearchInAdsUsingPrice?minPrice=${minPrice}&maxPrice=${maxPrice}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -1887,7 +1887,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'http://boyo33-001-site1.ktempurl.com/api/FilterService/GetAllServiceType1AndCountry?serv1=${servName}&Country=${country}',
+          'https://backend.boyo3.com/api/FilterService/GetAllServiceType1AndCountry?serv1=${servName}&Country=${country}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -2181,7 +2181,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'http://boyo33-001-site1.ktempurl.com/api/ServicePackage/GetUserServicePackages?userId=${userId}',
+          'https://backend.boyo3.com/api/ServicePackage/GetUserServicePackages?userId=${userId}',
           queryParameters: queryParameters,
           data: _data,
         )
