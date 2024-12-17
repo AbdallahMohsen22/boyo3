@@ -160,7 +160,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     bool isAdmin = false,
     File? imageCover,
   }) async {
-    final String url = 'http://boyo33-001-site1.ktempurl.com/api/Auth/UpdateSubProfile/$id';
+    final String url = 'https://backend.boyo3.com/api/Auth/UpdateSubProfile/$id';
 
     try {
       emit(ProfileUpdating());

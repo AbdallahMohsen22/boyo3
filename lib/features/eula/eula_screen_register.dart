@@ -53,7 +53,7 @@ class _EulaScreenRegisterState extends State<EulaScreenRegister> {
 يسمح Boyo3 للمستخدمين بحظر المستخدمين الآخرين الذين يشاركون في تفاعلات مسيئة أو غير مرغوب فيها. كما يحتفظ التطبيق بالحق في إزالة المستخدمين الذين يشاركون في انتهاكات متكررة.
 
 5. **الخصوصية**:
-يخضع استخدام التطبيق لسياسة الخصوصية الخاصة بنا، والتي يمكن العثور عليها على: https://boyo3.com/en_us/privacy-policy-2/. باستخدام التطبيق، فإنك توافق على جمع المعلومات واستخدامها وفقًا لسياسة الخصوصية.
+يخضع استخدام التطبيق لسياسة الخصوصية الخاصة بنا، والتي يمكن العثور عليها على: https://boyo3.com/pages/privacypolicy.html. باستخدام التطبيق، فإنك توافق على جمع المعلومات واستخدامها وفقًا لسياسة الخصوصية.
 
 6. **التحديثات والتعديلات**:
 قد يقوم Boyo3 بتحديث هذه الاتفاقية من وقت لآخر. يشكل الاستمرار في استخدام التطبيق بعد أي تغييرات قبولًا للاتفاقية المنقحة.
@@ -82,7 +82,7 @@ Please read this End User License Agreement carefully before using the Boyo3 app
    Boyo3 allows users to block other users who engage in abusive or unwanted interactions. The App also reserves the right to remove users who engage in repeated violations.
 
 5. **Privacy**:
-   The use of the App is subject to our Privacy Policy, which can be found at: https://boyo3.com/en_us/privacy-policy-2/. By using the App, you agree to the collection and use of information in accordance with the Privacy Policy.
+   The use of the App is subject to our Privacy Policy, which can be found at: https://boyo3.com/pages/privacypolicy.html. By using the App, you agree to the collection and use of information in accordance with the Privacy Policy.
 
 6. **Updates and Modifications**:
    Boyo3 may update this Agreement from time to time. Continued use of the App following any changes constitutes acceptance of the revised Agreement.

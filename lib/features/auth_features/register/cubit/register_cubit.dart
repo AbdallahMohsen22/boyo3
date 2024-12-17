@@ -47,6 +47,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       prefs.setBool('isAdmin', registerResponse.isAdmin);
       prefs.setString('userId', registerResponse.id);
       prefs.setString('token', registerResponse.token);
+
       isAdmin = registerResponse.isAdmin;
       userId = registerResponse.id;
       userToken = registerResponse.token;

@@ -1,6 +1,6 @@
 class ApiConstants {
   //api constants >> http://andrewfayez-001-site1.ltempurl.com/api/
-  static const String apiBaseUrl = "http://boyo33-001-site1.ktempurl.com/api/";
+  static const String apiBaseUrl = "https://backend.boyo3.com/api/";
   static const String login = "Auth/Login";
   static const String getAllPackages = "Package/GetAllPackages";
   static const String register = "Auth/Register/User";
@@ -13,7 +13,7 @@ class ApiConstants {
       'ServicePackage/GetAllServicePackages';
   static const String getAllVehicle = 'Ads/GetAllAds';
   static const String apiBaseUrlForImage =
-      "http://boyo33-001-site1.ktempurl.com/";
+      "https://backend.boyo3.com/";
 
   //GetAllService/Pending
   static const String adminGetAllAdsPending = 'Admin/GetAllService/Pending';
@@ -54,7 +54,7 @@ class ApiConstants {
   static const String resetPassword = 'Email/ResetPassword';
   static const String filterAdsByCountry = 'FilterAds/GetAllAdsCountry?country=';
   static const String filterAdsByType1AndCountry = 'FilterAds/GetAllAdsType1AndCountry?ads1=';
-//http://boyo33-001-site1.ktempurl.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1=Caravan&ads2=wanted&Country=%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D8%B1%D8%A7%D8%AA
+//https://backend.boyo3.com/api/FilterAds/GetAllAdsType1And2AndCountry?ads1=Caravan&ads2=wanted&Country=%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D8%B1%D8%A7%D8%AA
 
   static const String filterAdsByType1AndType2AndCountry = 'FilterAds/GetAllAdsType1AndCountry?ads1=';
   static const String filterAdsByCity = 'FilterAds/GetAllAdsCity?city=';

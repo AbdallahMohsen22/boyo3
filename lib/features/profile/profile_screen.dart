@@ -77,9 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<UserCubit>()
-        .fetchUser(userId!); // Fetch user info in initState
+    context.read<UserCubit>().fetchUser(userId!); // Fetch user info in initState
   }
 
   MyLocationProvider myLocationProvider = MyLocationProvider();
@@ -107,8 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: BlocConsumer<UserCubit, UserState>(
           listener: (context, state) {
             if (state is UserErrorInfo) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(state.message)));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
@@ -127,6 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
+                      ///image
                       SizedBox(
                         height: 150,
                         width: 150,
